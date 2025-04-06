@@ -1,5 +1,7 @@
 package com.example.kotlinapp
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,20 +12,22 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.auth.FirebaseAuth
 
 class ProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Lấy dữ liệu từ Intent
         val name = intent.getStringExtra("name") ?: "Unknown"
         val email = intent.getStringExtra("email") ?: "No email"
 
-        // Sử dụng Jetpack Compose để hiển thị giao diện
         setContent {
             ProfileScreen(name = name, email = email)
         }
@@ -32,6 +36,9 @@ class ProfileActivity : AppCompatActivity() {
 
 @Composable
 fun ProfileScreen(name: String, email: String) {
+    val context = LocalContext.current
+    val auth = FirebaseAuth.getInstance()
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -47,13 +54,27 @@ fun ProfileScreen(name: String, email: String) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Hiển thị name và email, không cần lo về null vì đã xử lý ở onCreate
-        Text(text = "Nammmmmmmmmmmmmmmmmmmme: $name", fontSize = 18.sp)
+        Text(text = "Name: $name", fontSize = 18.sp)
         Text(text = "Email: $email", fontSize = 18.sp)
 
         Spacer(modifier = Modifier.height(24.dp))
 
         Button(onClick = {
+            // 1. Đăng xuất khỏi Firebase
+            auth.signOut()
+            // 2. Đăng xuất khỏi Google để không nhớ tài khoản
+            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build()
+
+            val googleSignInClient = GoogleSignIn.getClient(context, gso)
+            googleSignInClient.revokeAccess()
+            googleSignInClient.signOut().addOnCompleteListener {
+                // 3. Quay về màn hình MainActivity
+                val intent = Intent(context, MainActivity::class.java)
+                context.startActivity(intent)
+                (context as? Activity)?.finish()
+            }
         }) {
             Text("Back")
         }
