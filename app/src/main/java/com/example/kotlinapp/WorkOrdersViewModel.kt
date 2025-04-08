@@ -21,9 +21,13 @@ class WorkOrdersViewModel : ViewModel() {
             .addOnSuccessListener { result ->
                 val list = result.map { doc ->
                     WorkOrder(
-                        id = doc.id,
+                        id = doc.getString("id") ?: "",
                         title = doc.getString("title") ?: "",
-                        description = doc.getString("description") ?: ""
+                        description = doc.getString("description") ?: "",
+                        assigned_to = doc.getString("assigned_to") ?: "",
+                        created_at = doc.getTimestamp("created_at"),
+                        due_date = doc.getTimestamp("due_date"),
+                        status = doc.getString("status") ?: ""
                     )
                 }
                 _workOrders.value = list
@@ -32,4 +36,25 @@ class WorkOrdersViewModel : ViewModel() {
                 // TODO: handle error
             }
     }
+
+    fun addWorkOrder(workOrder: WorkOrder) {
+        val db = FirebaseFirestore.getInstance()
+        val data = hashMapOf(
+            "title" to workOrder.title,
+            "description" to workOrder.description,
+            "assigned_to" to workOrder.assigned_to,
+            "created_at" to workOrder.created_at,
+            "due_date" to workOrder.due_date
+        )
+        db.collection("work_orders")
+            .add(data)
+            .addOnSuccessListener {
+                fetchWorkOrders() // Refresh danh sách
+            }
+            .addOnFailureListener {
+                // TODO: Xử lý lỗi
+            }
+    }
+
 }
+

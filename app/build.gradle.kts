@@ -50,6 +50,7 @@ android {
 
 dependencies {
     // Firebase dependencies với phiên bản cụ thể
+    implementation("com.google.firebase:firebase-firestore-ktx")
     implementation(platform("com.google.firebase:firebase-bom:32.8.0")) // Sử dụng phiên bản mới nhất hợp lệ
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-auth-ktx")

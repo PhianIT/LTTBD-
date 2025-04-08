@@ -59,12 +59,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.kotlinapp.screens.WorkOrdersScreen
+import com.example.kotlinapp.screens.WorkOrderScreen
 import com.example.kotlinapp.ui.ThemeScreen
 import com.example.kotlinapp.viewmodel.ThemeViewModel
 import com.google.firebase.FirebaseApp
@@ -73,7 +72,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         FirebaseApp.initializeApp(this) // Khởi tạo Firebase
-
         setContent {
             MainScreen()
         }
@@ -113,7 +111,7 @@ fun MainScreen() {
         ) {
             // Định nghĩa các route và các composable màn hình tương ứng
             composable("work_orders") {
-                WorkOrdersScreen() // Màn hình cho route "work_orders"
+                WorkOrderScreen() // Màn hình cho route "work_orders"
             }
             composable("assets") {
                 val themeViewModel: ThemeViewModel = viewModel()
