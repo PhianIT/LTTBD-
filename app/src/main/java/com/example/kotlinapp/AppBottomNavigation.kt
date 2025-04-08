@@ -20,7 +20,7 @@ data class BottomNavItem(val label: String, val icon: ImageVector, val route: St
 fun AppBottomNavigation(navController: NavHostController) {
     val items = listOf(
         BottomNavItem("Lệnh làm việc", Icons.Default.List, "work_orders"),
-        BottomNavItem("Tài sản", Icons.Default.Build, "assets"),
+        BottomNavItem("Tài sản", Icons.Default.Star, "assets"),
         BottomNavItem("Lịch trình", Icons.Default.DateRange, "schedule"),
         BottomNavItem("Hạng mục kho", Icons.Default.Edit, "inventory")
     )

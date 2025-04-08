@@ -48,11 +48,25 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.kotlinapp.screens.WorkOrdersScreen
+import com.example.kotlinapp.ui.ThemeScreen
+import com.example.kotlinapp.viewmodel.ThemeViewModel
 import com.google.firebase.FirebaseApp
 
 class MainActivity : ComponentActivity() {
@@ -68,18 +82,52 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen() {
+    // Tạo navController để điều hướng giữa các màn hình
     val navController = rememberNavController()
 
+    // Lấy route hiện tại để hiển thị tiêu đề phù hợp trên top bar
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route
+
+    // Danh sách các item trong bottom navigation
+    val items = listOf(
+        BottomNavItem("Lệnh làm việc", Icons.Default.List, "work_orders"),
+        BottomNavItem("Tài sản", Icons.Default.Star, "assets"),
+        BottomNavItem("Lịch trình", Icons.Default.DateRange, "schedule"),
+        BottomNavItem("Hạng mục kho", Icons.Default.Edit, "inventory")
+    )
+
+    // Tiêu đề hiển thị trên top bar, sẽ thay đổi theo route
+    val currentTitle = items.find { it.route == currentRoute }?.label ?: "Lệnh làm việc"
+
+    // Scaffold để tạo cấu trúc UI với top bar, bottom bar và content
     Scaffold(
-        topBar = { AppTopBar() },
-        bottomBar = { AppBottomNavigation(navController) },
-        floatingActionButton = { AppFloatingActionButton() },
-        floatingActionButtonPosition = FabPosition.End
+        topBar = { AppTopBar(title = currentTitle) },
+        bottomBar = { AppBottomNavigation(navController) }
     ) { innerPadding ->
-        AppContent(
+        // NavHost sẽ chứa các màn hình và xác định các route
+        NavHost(
             navController = navController,
+            startDestination = "work_orders", // Đặt màn hình mặc định là "work_orders"
             modifier = Modifier.padding(innerPadding)
-        )
+        ) {
+            // Định nghĩa các route và các composable màn hình tương ứng
+            composable("work_orders") {
+                WorkOrdersScreen() // Màn hình cho route "work_orders"
+            }
+            composable("assets") {
+                val themeViewModel: ThemeViewModel = viewModel()
+                ThemeScreen()
+            // Màn hình cho route "assets"
+            }
+            composable("schedule") {
+//                ScheduleScreen() // Màn hình cho route "schedule"
+            }
+            composable("inventory") {
+//                InventoryScreen() // Màn hình cho route "inventory"
+            }
+        }
     }
 }
+
 
