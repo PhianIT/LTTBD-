@@ -1,66 +1,108 @@
 package com.example.kotlinapp.ui.screen.profile
 
 import android.app.Activity
-import android.content.Intent
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.kotlinapp.MainActivity
 import com.example.kotlinapp.R
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.example.kotlinapp.ui.theme.AppBlue
 import com.google.firebase.auth.FirebaseAuth
 
 @Composable
-fun ProfileScreen(name: String, email: String) {
+fun ProfileScreen(
+    email: String,
+    name: String,
+    onLogout: () -> Unit
+) {
     val context = LocalContext.current
-    val auth = FirebaseAuth.getInstance()
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(horizontal = 24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Top
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.logo_tech_aid),
-            contentDescription = "Profile Image",
-            modifier = Modifier.size(120.dp)
+        Spacer(modifier = Modifier.height(32.dp))
+
+        Text(
+            text = "Hồ sơ",
+            fontSize = 26.sp,
+            fontWeight = FontWeight.Bold,
+            color = AppBlue
         )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Text(text = "Name: $name", fontSize = 18.sp)
-        Text(text = "Email: $email", fontSize = 18.sp)
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        Button(onClick = {
-            // 1. Đăng xuất Firebase
-            auth.signOut()
-
-            // 2. Đăng xuất Google
-            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build()
-            val googleSignInClient = GoogleSignIn.getClient(context, gso)
-            googleSignInClient.signOut().addOnCompleteListener {
-                // 3. Quay về màn hình MainActivity
-                val intent = Intent(context, MainActivity::class.java)
-                context.startActivity(intent)
-                (context as? Activity)?.finish()
+        // Avatar người dùng
+        Box(contentAlignment = Alignment.BottomEnd) {
+            Image(
+                painter = painterResource(id = R.drawable.logo_tech_aid), // Thay bằng avatar mặc định
+                contentDescription = "User Avatar",
+                modifier = Modifier
+                    .size(120.dp)
+                    .clip(CircleShape)
+            )
+            IconButton(onClick = {
+                Toast.makeText(context, "Đổi ảnh đại diện (chưa hỗ trợ)", Toast.LENGTH_SHORT).show()
+            }) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_camera),
+                    contentDescription = "Change Avatar",
+                    tint = AppBlue,
+                    modifier = Modifier.size(24.dp)
+                )
             }
-        }) {
-            Text("Đăng xuất")
+        }
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        // Tên người dùng
+        OutlinedTextField(
+            value = name,
+            onValueChange = {},
+            label = { Text("Tên") },
+            enabled = false,
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        // Email
+        OutlinedTextField(
+            value = email,
+            onValueChange = {},
+            label = { Text("Email") },
+            enabled = false,
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        Spacer(modifier = Modifier.height(40.dp))
+
+        Button(
+            onClick = {
+                FirebaseAuth.getInstance().signOut()
+                onLogout()
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(50.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = AppBlue),
+            shape = MaterialTheme.shapes.medium
+        ) {
+            Text("Đăng xuất", color = Color.White, fontSize = 16.sp)
         }
     }
 }

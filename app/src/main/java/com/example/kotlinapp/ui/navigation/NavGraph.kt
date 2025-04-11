@@ -79,7 +79,6 @@ fun NavGraph(
             )
         }
 
-
         composable(
             "profile/{email}/{name}",
             arguments = listOf(
@@ -90,7 +89,15 @@ fun NavGraph(
             val email = backStackEntry.arguments?.getString("email") ?: ""
             val name = backStackEntry.arguments?.getString("name") ?: ""
 
-            ProfileScreen(email = email, name = name)
+            ProfileScreen(
+                email = email,
+                name = name,
+                onLogout = {
+                    navController.navigate("login") {
+                        popUpTo("profile/{email}/{name}") { inclusive = true }
+                    }
+                }
+            )
         }
     }
 }

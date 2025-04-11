@@ -187,7 +187,17 @@ fun LoginScreen(
 
                     Button(
                         onClick = {
-                            viewModel.loginWithEmail(email.trim(), password)
+                            when {
+                                email.isBlank() -> {
+                                    Toast.makeText(context, "Bạn chưa nhập tài khoản!", Toast.LENGTH_SHORT).show()
+                                }
+                                password.isBlank() -> {
+                                    Toast.makeText(context, "Bạn chưa nhập mật khẩu!", Toast.LENGTH_SHORT).show()
+                                }
+                                else -> {
+                                    viewModel.loginWithEmail(email.trim(), password)
+                                }
+                            }
                         },
                         modifier = Modifier
                             .fillMaxWidth()

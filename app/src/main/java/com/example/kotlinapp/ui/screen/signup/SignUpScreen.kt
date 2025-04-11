@@ -169,7 +169,7 @@ fun SignUpScreen(
                     OutlinedTextField(
                         value = confirmPassword,
                         onValueChange = { newValue ->
-                            password = newValue
+                            confirmPassword = newValue
                                 .filter { it.isLetterOrDigit() } // Chỉ cho chữ và số
                                 .replace(" ", "") // Bỏ khoảng trắng
                         },
@@ -244,7 +244,15 @@ fun SignUpScreen(
                         Text("Đăng kí", color = Color.White)
                     }
 
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(12.dp))
+
+                    TextButton(onClick = {
+                        navController.navigate("login")
+                    }) {
+                        Text("Bạn đã có tài khoản?", color = AppBlue)
+                    }
+
+                    Spacer(modifier = Modifier.height(12.dp))
 
                     Divider()
 
