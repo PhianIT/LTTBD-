@@ -29,6 +29,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.example.kotlinapp.util.SharedPreferencesHelper
+
 
 @Composable
 fun LoginScreen(
@@ -62,6 +64,7 @@ fun LoginScreen(
                                 val user = firebaseAuth.currentUser
                                 val email = user?.email ?: ""
                                 val name = user?.displayName ?: "User"
+                                SharedPreferencesHelper.saveUser(context, email, name) // Lưu vào SharedPreferences
                                 onLoginSuccess(email, name)
                             } else {
                                 Toast.makeText(context, "Google login failed", Toast.LENGTH_SHORT).show()
@@ -80,6 +83,7 @@ fun LoginScreen(
                 val user = firebaseAuth.currentUser
                 val email = user?.email ?: ""
                 val name = user?.displayName ?: "User"
+                SharedPreferencesHelper.saveUser(context, email, name) // Lưu vào SharedPreferences
                 Toast.makeText(context, "Đăng nhập thành công", Toast.LENGTH_SHORT).show()
                 onLoginSuccess(email, name)
                 viewModel.resetState()
@@ -231,9 +235,13 @@ fun LoginScreen(
                         OutlinedButton(
                             onClick = {
                                 isGoogleLoading = true
+
+                                // Đăng xuất khỏi Firebase và Google để đăng nhập tài khoản khác
                                 firebaseAuth.signOut()
-                                val signInIntent = googleSignInClient.signInIntent
-                                launcher.launch(signInIntent)
+                                googleSignInClient.signOut().addOnCompleteListener {
+                                    val signInIntent = googleSignInClient.signInIntent
+                                    launcher.launch(signInIntent)
+                                }
                             }
                         ) {
                             Icon(

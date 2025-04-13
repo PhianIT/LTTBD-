@@ -19,6 +19,8 @@ import androidx.compose.ui.unit.sp
 import com.example.kotlinapp.R
 import com.example.kotlinapp.ui.theme.AppBlue
 import com.google.firebase.auth.FirebaseAuth
+import com.example.kotlinapp.util.SharedPreferencesHelper
+
 
 @Composable
 fun ProfileScreen(
@@ -27,6 +29,11 @@ fun ProfileScreen(
     onLogout: () -> Unit
 ) {
     val context = LocalContext.current
+
+    // Lấy thông tin từ SharedPreferences nếu không được truyền vào
+    val actualEmail = email ?: SharedPreferencesHelper.getUserEmail(context) ?: ""
+    val actualName = name ?: SharedPreferencesHelper.getUserName(context) ?: ""
+
 
     Column(
         modifier = Modifier
@@ -94,6 +101,7 @@ fun ProfileScreen(
         Button(
             onClick = {
                 FirebaseAuth.getInstance().signOut()
+                SharedPreferencesHelper.clearUser(context)
                 onLogout()
             },
             modifier = Modifier

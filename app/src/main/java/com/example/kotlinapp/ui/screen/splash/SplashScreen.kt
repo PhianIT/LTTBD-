@@ -24,6 +24,8 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.delay
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
+import com.example.kotlinapp.util.SharedPreferencesHelper
+
 
 @Composable
 fun SplashScreen(navController: NavController) {
@@ -41,10 +43,11 @@ fun SplashScreen(navController: NavController) {
 
         delay(2000)
 
-        val user = firebaseAuth.currentUser
-        if (user != null) {
-            val email = user.email ?: ""
-            val name = user.displayName ?: "User"
+        // ✅ Đọc từ SharedPreferences thay vì Firebase
+        val email = SharedPreferencesHelper.getUserEmail(context)
+        val name = SharedPreferencesHelper.getUserName(context)
+
+        if (!email.isNullOrEmpty() && !name.isNullOrEmpty()) {
             val encodedEmail = URLEncoder.encode(email, StandardCharsets.UTF_8.toString())
             val encodedName = URLEncoder.encode(name, StandardCharsets.UTF_8.toString())
 

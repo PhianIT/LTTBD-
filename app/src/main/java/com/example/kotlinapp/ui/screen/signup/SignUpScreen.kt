@@ -65,6 +65,8 @@ fun SignUpScreen(
                                 val user = firebaseAuth.currentUser
                                 val email = user?.email ?: ""
                                 val name = user?.displayName ?: "User"
+                                // ✅ Lưu thông tin user
+                                com.example.kotlinapp.util.SharedPreferencesHelper.saveUser(context, email, name)
                                 onLoginSuccess(email, name)
                             } else {
                                 Toast.makeText(context, "Google login failed", Toast.LENGTH_SHORT).show()
@@ -78,7 +80,7 @@ fun SignUpScreen(
     )
 
     Box(modifier = Modifier.fillMaxSize()) {
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.fillMaxSize())       {
             // Header Image
             Box(
                 modifier = Modifier
@@ -263,8 +265,10 @@ fun SignUpScreen(
                             onClick = {
                                 isGoogleLoading = true
                                 firebaseAuth.signOut()
-                                val signInIntent = googleSignInClient.signInIntent
-                                launcher.launch(signInIntent)
+                                googleSignInClient.signOut().addOnCompleteListener {
+                                    val signInIntent = googleSignInClient.signInIntent
+                                    launcher.launch(signInIntent)
+                                }
                             }
                         ) {
                             Icon(
