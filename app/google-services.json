@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "701578216243",
+    "project_id": "techaid-50cc0",
+    "storage_bucket": "techaid-50cc0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:701578216243:android:ed163443cd87ae3cb3f446",
+        "android_client_info": {
+          "package_name": "com.example.techaid"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZwkHSKcyOgQHHleO0IiDGgYPwLGth1-M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
