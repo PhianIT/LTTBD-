@@ -1,5 +1,6 @@
 package com.example.kotlinapp.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.kotlinapp.model.WorkOrder
 import com.google.firebase.firestore.FirebaseFirestore
@@ -21,7 +22,7 @@ class WorkOrdersViewModel : ViewModel() {
             .addOnSuccessListener { result ->
                 val list = result.map { doc ->
                     WorkOrder(
-                        id = doc.getString("id") ?: "",
+                        id = doc.id, // <-- Đây mới đúng là documentId
                         title = doc.getString("title") ?: "",
                         description = doc.getString("description") ?: "",
                         assigned_to = doc.getString("assigned_to") ?: "",
@@ -36,6 +37,7 @@ class WorkOrdersViewModel : ViewModel() {
                 // TODO: handle error
             }
     }
+
 
     fun addWorkOrder(workOrder: WorkOrder) {
         val db = FirebaseFirestore.getInstance()
@@ -55,6 +57,22 @@ class WorkOrdersViewModel : ViewModel() {
                 // TODO: Xử lý lỗi
             }
     }
+
+    fun deleteWorkOrder(documentId: String) {
+        val db = FirebaseFirestore.getInstance()
+        db.collection("work_orders")
+            .document(documentId)
+            .delete()
+            .addOnSuccessListener {
+                // Xoá thành công
+                fetchWorkOrders() // Cập nhật lại danh sách
+            }
+            .addOnFailureListener { e ->
+                // Xử lý lỗi
+                Log.e("DeleteWorkOrder", "Lỗi khi xoá: ${e.message}")
+            }
+    }
+
 
 }
 

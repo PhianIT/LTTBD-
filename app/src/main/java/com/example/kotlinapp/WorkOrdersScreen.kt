@@ -13,6 +13,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -26,6 +27,13 @@ import com.google.firebase.Timestamp
 import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.*
+import android.app.DatePickerDialog
+import android.widget.Toast
+import androidx.compose.runtime.*
+import androidx.compose.ui.platform.LocalContext
+import java.util.*
+
+
 
 @Composable
 fun WorkOrderScreen(viewModel: WorkOrdersViewModel = viewModel()) {
@@ -107,7 +115,10 @@ fun WorkOrderItem(order: WorkOrder) {
                         )
                         DropdownMenuItem(
                             text = { Text("Xoá") },
-                            onClick = { /* TODO */ }
+                            onClick = {
+//                                viewModel.deleteWorkOrder(order.id) // Truyền documentId vào đây
+//                                expanded = false // đóng menu sau khi xóa
+                            }
                         )
                     }
                 }
@@ -152,11 +163,39 @@ fun WorkOrderItem(order: WorkOrder) {
         }
     }
 }
+
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddWorkOrderDialog(onDismiss: () -> Unit, onAdd: (WorkOrder) -> Unit) {
+    val context = LocalContext.current
     var title by remember { mutableStateOf("") }
     var description by remember { mutableStateOf("") }
     var assignedTo by remember { mutableStateOf("") }
+
+    val now = remember { Calendar.getInstance() }
+    var dueDate by remember { mutableStateOf(now.time) }
+
+    var showDatePicker by remember { mutableStateOf(false) }
+
+    if (showDatePicker) {
+        DatePickerDialog(
+            context,
+            { _, year, month, dayOfMonth ->
+                val selected = Calendar.getInstance()
+                selected.set(year, month, dayOfMonth)
+                if (selected.time.after(now.time)) {
+                    dueDate = selected.time
+                } else {
+                    Toast.makeText(context, "Ngày hết hạn phải sau ngày hiện tại", Toast.LENGTH_SHORT).show()
+                }
+                showDatePicker = false
+            },
+            now.get(Calendar.YEAR),
+            now.get(Calendar.MONTH),
+            now.get(Calendar.DAY_OF_MONTH)
+        ).show()
+    }
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -166,17 +205,25 @@ fun AddWorkOrderDialog(onDismiss: () -> Unit, onAdd: (WorkOrder) -> Unit) {
                 OutlinedTextField(value = title, onValueChange = { title = it }, label = { Text("Tiêu đề") })
                 OutlinedTextField(value = description, onValueChange = { description = it }, label = { Text("Mô tả") })
                 OutlinedTextField(value = assignedTo, onValueChange = { assignedTo = it }, label = { Text("Giao cho") })
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Text("Ngày hết hạn: ${SimpleDateFormat("dd/MM/yyyy").format(dueDate)}")
+                Button(onClick = { showDatePicker = true }) {
+                    Text("Chọn ngày hết hạn")
+                }
             }
         },
         confirmButton = {
             Button(onClick = {
-                val now = Timestamp.now()
                 val workOrder = WorkOrder(
+                    id = UUID.randomUUID().toString(),
                     title = title,
                     description = description,
                     assigned_to = assignedTo,
-                    created_at = now,
-                    due_date = now // bạn có thể thay bằng date picker sau
+                    status = "Pending",
+                    created_at = Timestamp(now.time),
+                    due_date = Timestamp(dueDate)
                 )
                 onAdd(workOrder)
             }) {
