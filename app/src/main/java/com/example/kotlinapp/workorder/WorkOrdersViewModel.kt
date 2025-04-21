@@ -14,14 +14,42 @@ class WorkOrdersViewModel : ViewModel() {
         fetchWorkOrders()
     }
 
-    private fun fetchWorkOrders() {
-        val db = FirebaseFirestore.getInstance()
-        db.collection("work_orders")
-            .get()
-            .addOnSuccessListener { result ->
-                val list = result.map { doc ->
+//    private fun fetchWorkOrders() {
+//        val db = FirebaseFirestore.getInstance()
+//        db.collection("work_orders")
+//            .get()
+//            .addOnSuccessListener { result ->
+//                val list = result.map { doc ->
+//                    WorkOrder(
+//                        id = doc.id, // <-- Đây mới đúng là documentId
+//                        title = doc.getString("title") ?: "",
+//                        description = doc.getString("description") ?: "",
+//                        assigned_to = doc.getString("assigned_to") ?: "",
+//                        created_at = doc.getTimestamp("created_at"),
+//                        due_date = doc.getTimestamp("due_date"),
+//                        status = doc.getString("status") ?: "",
+//                        imageUrl = doc.getString("imageUrl")
+//                    )
+//                }
+//                _workOrders.value = list
+//            }
+//            .addOnFailureListener {
+//                // TODO: handle error
+//            }
+//    }
+private fun fetchWorkOrders() {
+    val db = FirebaseFirestore.getInstance()
+    db.collection("work_orders")
+        .addSnapshotListener { snapshot, error ->
+            if (error != null) {
+                Log.e("WorkOrders", "Lỗi khi lắng nghe cập nhật", error)
+                return@addSnapshotListener
+            }
+
+            if (snapshot != null && !snapshot.isEmpty) {
+                val list = snapshot.documents.map { doc ->
                     WorkOrder(
-                        id = doc.id, // <-- Đây mới đúng là documentId
+                        id = doc.id,
                         title = doc.getString("title") ?: "",
                         description = doc.getString("description") ?: "",
                         assigned_to = doc.getString("assigned_to") ?: "",
@@ -33,10 +61,9 @@ class WorkOrdersViewModel : ViewModel() {
                 }
                 _workOrders.value = list
             }
-            .addOnFailureListener {
-                // TODO: handle error
-            }
-    }
+        }
+}
+
     fun addWorkOrder(workOrder: WorkOrder) {
         val db = FirebaseFirestore.getInstance()
         val data = hashMapOf(

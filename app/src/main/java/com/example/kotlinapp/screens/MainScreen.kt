@@ -51,6 +51,9 @@ fun MainScreen(userId: String = "user_001") {
                 title = currentTitle,
                 onProfileClick = {
                     navController.navigate("profile/$userId")
+                },
+                onNotificationClick = {
+                    navController.navigate("notifications")
                 }
             )
         },
@@ -64,6 +67,7 @@ fun MainScreen(userId: String = "user_001") {
             composable("work_orders") {
                 WorkOrderScreen(navController = navController)
             }
+
             composable("assets") {
                 val themeViewModel: ThemeViewModel = viewModel()
                 ThemeScreen()

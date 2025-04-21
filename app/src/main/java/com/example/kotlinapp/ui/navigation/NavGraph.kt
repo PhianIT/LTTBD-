@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
+
 import com.example.kotlinapp.ui.screen.login.LoginScreen
 import com.example.kotlinapp.ui.screen.signup.SignUpScreen
 import com.example.kotlinapp.ui.screen.splash.SplashScreen
@@ -78,6 +79,8 @@ fun NavGraph(
                 }
             )
         }
+
+
 
         // ProfileScreen có thể vẫn giữ nếu bạn cần gọi nó từ MainScreen
         composable(

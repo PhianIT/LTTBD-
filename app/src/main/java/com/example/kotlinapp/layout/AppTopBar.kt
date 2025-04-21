@@ -12,18 +12,20 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import com.example.kotlinapp.notification.NotificationMenu
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AppTopBar(title: String, onProfileClick: () -> Unit) {
+fun AppTopBar(title: String, onProfileClick: () -> Unit,onNotificationClick: () -> Unit) {
     TopAppBar(
         title = { Text(title) },
         actions = {
             IconButton(onClick = { /* Xử lý thông báo */ }) {
                 Icon(Icons.Default.Search, contentDescription = "Search")
             }
-            IconButton(onClick = { /* Xử lý lịch */ }) {
-                Icon(Icons.Default.Email, contentDescription = "Notifications")
-            }
+            // Thay icon Email bằng NotificationMenu
+            NotificationMenu()
+
             IconButton(onClick =onProfileClick ) {
                 Icon(Icons.Default.Face, contentDescription = "Your profile")
             }
