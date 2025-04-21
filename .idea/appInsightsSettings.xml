@@ -10,9 +10,9 @@
               <option name="connection">
                 <ConnectionSetting>
                   <option name="appId" value="com.example.kotlinapp" />
-                  <option name="mobileSdkAppId" value="1:266296248046:android:cab18ae54a57eff4c215ff" />
-                  <option name="projectId" value="kotlinapp-e67fa" />
-                  <option name="projectNumber" value="266296248046" />
+                  <option name="mobileSdkAppId" value="1:870495192069:android:0f764e86d3a4f6f216886c" />
+                  <option name="projectId" value="khoa-9bcdb" />
+                  <option name="projectNumber" value="870495192069" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
