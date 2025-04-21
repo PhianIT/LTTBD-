@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AppInsightsSettings">
-    <option name="selectedTabId" value="Firebase Crashlytics" />
     <option name="tabSettings">
       <map>
         <entry key="Firebase Crashlytics">
@@ -10,9 +9,6 @@
               <option name="connection">
                 <ConnectionSetting>
                   <option name="appId" value="com.example.kotlinapp" />
-                  <option name="mobileSdkAppId" value="1:285389116296:android:bbaabf5fea0baf7a75e03d" />
-                  <option name="projectId" value="kotliapp" />
-                  <option name="projectNumber" value="285389116296" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

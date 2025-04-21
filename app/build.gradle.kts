@@ -50,17 +50,11 @@ android {
 
 dependencies {
     // Firebase dependencies với phiên bản cụ thể
-    implementation("com.google.firebase:firebase-firestore-ktx")
     implementation(platform("com.google.firebase:firebase-bom:32.8.0")) // Sử dụng phiên bản mới nhất hợp lệ
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.firebase:firebase-database-ktx")
     implementation("com.google.android.gms:play-services-auth:20.7.0") // Phiên bản mới nhất tính đến 2024, có thể kiểm tra lại
-    implementation("io.coil-kt:coil-compose:2.4.0")
-    implementation("io.coil-kt:coil-compose:2.4.0")
-    implementation("com.google.firebase:firebase-storage-ktx")
-    implementation("androidx.activity:activity-compose:1.7.2") // để sử dụng rememberLauncherForActivityResult
-    implementation("com.kizitonwose.calendar:compose:2.4.0")
 
     // AndroidX & Jetpack Compose
     implementation("androidx.core:core-ktx:1.12.0")
@@ -74,9 +68,15 @@ dependencies {
     implementation(libs.androidx.navigation.runtime.android)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.firebase.storage.ktx)
+    implementation("io.coil-kt:coil-compose:2.4.0")
 
     // Testing
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
+    implementation ("androidx.navigation:navigation-compose:2.8.9")
+    implementation ("com.google.accompanist:accompanist-navigation-animation:0.34.0")
+
 }
