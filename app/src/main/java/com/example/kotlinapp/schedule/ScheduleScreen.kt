@@ -9,11 +9,17 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -38,6 +44,7 @@ fun ScheduleScreen(viewModel: WorkOrdersViewModel = viewModel()) {
     val firstDayOfMonth = yearMonth.atDay(1)
     val lastDayOfMonth = yearMonth.atEndOfMonth()
     val firstDayOfWeek = firstDayOfMonth.dayOfWeek.value % 7 // Sunday = 0, Monday = 1, ...
+    var selectedDate by remember { mutableStateOf<LocalDate?>(null) }
 
     // Convert work orders' due dates to LocalDate for comparison
     val workOrderDates = workOrders
@@ -92,7 +99,9 @@ fun ScheduleScreen(viewModel: WorkOrdersViewModel = viewModel()) {
                 Box(
                     modifier = Modifier
                         .size(48.dp)
-                        .clickable { /* Handle day click if needed */ },
+                        .clickable {
+                            selectedDate = date
+                        },
                     contentAlignment = Alignment.Center
                 ) {
                     Column(
@@ -115,6 +124,47 @@ fun ScheduleScreen(viewModel: WorkOrdersViewModel = viewModel()) {
                 }
             }
         }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        selectedDate?.let { date ->
+            val ordersOfDay = workOrders.filter {
+                it.due_date?.toDate()?.toLocalDate() == date
+            }
+
+            Text(
+                text = "Công việc ngày ${date.dayOfMonth}/${date.monthValue}/${date.year}",
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.padding(vertical = 8.dp)
+            )
+
+            Column {
+                ordersOfDay.forEach { order ->
+                    Card(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 4.dp),
+                        shape = RoundedCornerShape(8.dp),
+                        colors = CardDefaults.cardColors(containerColor = Color(0xFFFAFAFA)),
+                        elevation = CardDefaults.cardElevation(2.dp)
+                    ) {
+                        Column(modifier = Modifier.padding(12.dp)) {
+                            Text("📌 ${order.title}", fontWeight = FontWeight.Bold)
+                            Text("Giao cho: ${order.assigned_to}")
+                            Text("Mô tả: ${order.description}")
+                        }
+                    }
+                }
+                if (ordersOfDay.isEmpty()) {
+                    Text(
+                        text = "Không có công việc nào trong ngày này.",
+                        color = Color.Gray,
+                        modifier = Modifier.padding(vertical = 8.dp)
+                    )
+                }
+            }
+        }
+
     }
 }
 
