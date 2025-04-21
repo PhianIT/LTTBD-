@@ -121,6 +121,14 @@ private fun fetchWorkOrders() {
             }
     }
 
+    fun updateWorkOrder(order: WorkOrder) {
+        val db = FirebaseFirestore.getInstance()
+        db.collection("work_orders")
+            .document(order.id)
+            .set(order)
+            .addOnSuccessListener { Log.d("Update", "Cập nhật thành công") }
+            .addOnFailureListener { e -> Log.e("Update", "Lỗi: ${e.message}") }
+    }
 
 
 }

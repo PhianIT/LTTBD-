@@ -78,6 +78,8 @@ fun WorkOrderScreen(viewModel: WorkOrdersViewModel = viewModel(),navController: 
 fun WorkOrderItem(order: WorkOrder,navController: NavController) {
     var expanded by remember { mutableStateOf(false) }
     val viewModel: WorkOrdersViewModel = viewModel()
+    var showEditDialog by remember { mutableStateOf(false) }
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -119,7 +121,10 @@ fun WorkOrderItem(order: WorkOrder,navController: NavController) {
                         )
                         DropdownMenuItem(
                             text = { Text("Chỉnh sửa") },
-                            onClick = { /* TODO */ }
+                            onClick = {
+                                showEditDialog = true
+                                expanded = false
+                            }
                         )
                         DropdownMenuItem(
                             text = { Text("Xoá") },
@@ -170,6 +175,17 @@ fun WorkOrderItem(order: WorkOrder,navController: NavController) {
             },)
         }
     }
+    if (showEditDialog) {
+        EditWorkOrderDialog(
+            order = order,
+            onDismiss = { showEditDialog = false },
+            onUpdate = { updatedOrder ->
+                viewModel.updateWorkOrder(updatedOrder)
+                showEditDialog = false
+            }
+        )
+    }
+
 }
 
 
@@ -343,4 +359,71 @@ fun getStatusText(status: String): String {
     }
 }
 
+@Composable
+fun EditWorkOrderDialog(
+    order: WorkOrder,
+    onDismiss: () -> Unit,
+    onUpdate: (WorkOrder) -> Unit
+) {
+    val context = LocalContext.current
+    val now = Calendar.getInstance()
+
+    var title by remember { mutableStateOf(order.title) }
+    var description by remember { mutableStateOf(order.description) }
+    var assignedTo by remember { mutableStateOf(order.assigned_to) }
+    var dueDate by remember { mutableStateOf(order.due_date?.toDate() ?: now.time) }
+    var showDatePicker by remember { mutableStateOf(false) }
+
+    if (showDatePicker) {
+        DatePickerDialog(
+            context,
+            { _, year, month, dayOfMonth ->
+                val cal = Calendar.getInstance()
+                cal.set(year, month, dayOfMonth)
+                dueDate = cal.time
+                showDatePicker = false
+            },
+            dueDate.year + 1900,
+            dueDate.month,
+            dueDate.date
+        ).show()
+    }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Chỉnh sửa Work Order") },
+        text = {
+            Column {
+                OutlinedTextField(value = title, onValueChange = { title = it }, label = { Text("Tiêu đề") })
+                OutlinedTextField(value = description, onValueChange = { description = it }, label = { Text("Mô tả") })
+                OutlinedTextField(value = assignedTo, onValueChange = { assignedTo = it }, label = { Text("Giao cho") })
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Text("Ngày hết hạn: ${SimpleDateFormat("dd/MM/yyyy").format(dueDate)}")
+                Button(onClick = { showDatePicker = true }) {
+                    Text("Chọn ngày hết hạn")
+                }
+            }
+        },
+        confirmButton = {
+            Button(onClick = {
+                val updated = order.copy(
+                    title = title,
+                    description = description,
+                    assigned_to = assignedTo,
+                    due_date = Timestamp(dueDate)
+                )
+                onUpdate(updated)
+            }) {
+                Text("Lưu")
+            }
+        },
+        dismissButton = {
+            OutlinedButton(onClick = onDismiss) {
+                Text("Hủy")
+            }
+        }
+    )
+}
 
