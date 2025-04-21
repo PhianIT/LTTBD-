@@ -24,27 +24,51 @@ import com.example.kotlinapp.viewmodel.WorkOrdersViewModel
 import com.example.kotlinapp.model.WorkOrder
 import com.google.firebase.Timestamp
 import java.text.SimpleDateFormat
-import java.util.Locale
 import java.util.*
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun WorkOrderScreen(viewModel: WorkOrdersViewModel = viewModel()) {
+fun WorkOrderScreen(
+    email: String,
+    name: String,
+    onLogout: () -> Unit,
+    onViewDetail: (WorkOrder) -> Unit,
+    onEdit: (WorkOrder) -> Unit,
+    viewModel: WorkOrdersViewModel = viewModel()
+) {
     val workOrders by viewModel.workOrders.collectAsState()
     var showDialog by remember { mutableStateOf(false) }
 
     Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Work Orders", color = Color.White) },
+                actions = {
+                    TextButton(onClick = onLogout) {
+                        Text("Đăng xuất", color = Color.White)
+                    }
+                }
+            )
+        },
         floatingActionButton = {
             FloatingActionButton(onClick = { showDialog = true }) {
                 Icon(Icons.Default.Add, contentDescription = "Thêm Work Order")
             }
         }
     ) { padding ->
-        Surface(modifier = Modifier
-            .fillMaxSize()
-            .padding(padding)) {
+        Surface(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+        ) {
             LazyColumn(modifier = Modifier.padding(8.dp)) {
                 items(workOrders) { order ->
-                    WorkOrderItem(order)
+                    WorkOrderItem(
+                        order = order,
+                        onView = onViewDetail,
+                        onEdit = onEdit,
+                        onDelete = { viewModel.deleteWorkOrder(order.id) }
+                    )
                 }
             }
 
@@ -61,9 +85,13 @@ fun WorkOrderScreen(viewModel: WorkOrdersViewModel = viewModel()) {
     }
 }
 
-
 @Composable
-fun WorkOrderItem(order: WorkOrder) {
+fun WorkOrderItem(
+    order: WorkOrder,
+    onView: (WorkOrder) -> Unit,
+    onEdit: (WorkOrder) -> Unit,
+    onDelete: () -> Unit
+) {
     var expanded by remember { mutableStateOf(false) }
 
     Card(
@@ -99,15 +127,24 @@ fun WorkOrderItem(order: WorkOrder) {
                     DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
                         DropdownMenuItem(
                             text = { Text("Xem lệnh làm việc") },
-                            onClick = { /* TODO */ }
+                            onClick = {
+                                expanded = false
+                                onView(order)
+                            }
                         )
                         DropdownMenuItem(
                             text = { Text("Chỉnh sửa") },
-                            onClick = { /* TODO */ }
+                            onClick = {
+                                expanded = false
+                                onEdit(order)
+                            }
                         )
                         DropdownMenuItem(
                             text = { Text("Xoá") },
-                            onClick = { /* TODO */ }
+                            onClick = {
+                                expanded = false
+                                onDelete()
+                            }
                         )
                     }
                 }
@@ -152,6 +189,8 @@ fun WorkOrderItem(order: WorkOrder) {
         }
     }
 }
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddWorkOrderDialog(onDismiss: () -> Unit, onAdd: (WorkOrder) -> Unit) {
     var title by remember { mutableStateOf("") }
@@ -176,7 +215,7 @@ fun AddWorkOrderDialog(onDismiss: () -> Unit, onAdd: (WorkOrder) -> Unit) {
                     description = description,
                     assigned_to = assignedTo,
                     created_at = now,
-                    due_date = now // bạn có thể thay bằng date picker sau
+                    due_date = now
                 )
                 onAdd(workOrder)
             }) {
@@ -190,7 +229,6 @@ fun AddWorkOrderDialog(onDismiss: () -> Unit, onAdd: (WorkOrder) -> Unit) {
         }
     )
 }
-
 
 fun formatDate(timestamp: Timestamp?): String {
     return timestamp?.toDate()?.let { date ->
@@ -216,5 +254,3 @@ fun getStatusText(status: String): String {
         else -> "Không rõ"
     }
 }
-
-

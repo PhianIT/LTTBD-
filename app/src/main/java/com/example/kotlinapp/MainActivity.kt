@@ -1,47 +1,3 @@
-//package com.example.kotlinapp
-//
-//import android.content.Intent
-//import android.os.Bundle
-//import androidx.activity.compose.setContent
-//import androidx.appcompat.app.AppCompatActivity
-//import com.google.android.gms.auth.api.signin.GoogleSignIn
-//import com.google.android.gms.auth.api.signin.GoogleSignInClient
-//import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-//import com.google.firebase.auth.FirebaseAuth
-//
-//class MainActivity : AppCompatActivity() {
-//
-//    private lateinit var googleSignInClient: GoogleSignInClient
-//    private lateinit var firebaseAuth: FirebaseAuth
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//
-//        // Configure Google Sign-In
-//        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//            .requestIdToken(getString(R.string.default_web_client_id))
-//            .requestEmail()
-//            .build()
-//
-//        googleSignInClient = GoogleSignIn.getClient(this, gso)
-//        firebaseAuth = FirebaseAuth.getInstance()
-//
-//        setContent {
-//            LoginScreen(
-//                googleSignInClient = googleSignInClient,
-//                firebaseAuth = firebaseAuth,
-//                onLoginSuccess = { account ->
-//                    // Chuyển đến màn hình tiếp theo khi đăng nhập thành công
-//                    val intent = Intent(this, ProfileActivity::class.java)
-//                    intent.putExtra("name", account.displayName)
-//                    intent.putExtra("email", account.email)
-//                    startActivity(intent)
-//                }
-//            )
-//        }
-//    }
-//}
-
 package com.example.kotlinapp
 
 import android.os.Bundle
@@ -53,7 +9,6 @@ import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Star
-import androidx.compose.material3.FabPosition
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -67,27 +22,63 @@ import com.example.kotlinapp.screens.WorkOrderScreen
 import com.example.kotlinapp.ui.ThemeScreen
 import com.example.kotlinapp.viewmodel.ThemeViewModel
 import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
+import com.example.kotlinapp.ui.screen.login.LoginScreen
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         FirebaseApp.initializeApp(this) // Khởi tạo Firebase
+        FirebaseAuth.getInstance().signOut()
         setContent {
-            MainScreen()
+            val navController = rememberNavController()
+            val context = this
+
+            // Firebase Auth
+            val firebaseAuth = FirebaseAuth.getInstance()
+
+            // Cấu hình Google Sign-In
+            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id)) // Đảm bảo bạn đã cấu hình trong Firebase Console
+                .requestEmail()
+                .build()
+
+            val googleSignInClient = GoogleSignIn.getClient(context, gso)
+
+            val startDestination = if (firebaseAuth.currentUser != null) "home" else "login"
+
+            NavHost(navController = navController, startDestination = startDestination) {
+                composable("login") {
+                    LoginScreen(
+                        googleSignInClient = googleSignInClient,
+                        firebaseAuth = firebaseAuth,
+                        onLoginSuccess = { email, name ->
+                            navController.navigate("home") {
+                                popUpTo("login") { inclusive = true }
+                            }
+                        },
+                        onSignUpClick = {
+                            // Điều hướng đến màn hình đăng ký nếu bạn có
+                        }
+                    )
+                }
+
+                composable("home") {
+                    MainScreen()
+                }
+            }
         }
     }
 }
 
 @Composable
 fun MainScreen() {
-    // Tạo navController để điều hướng giữa các màn hình
     val navController = rememberNavController()
-
-    // Lấy route hiện tại để hiển thị tiêu đề phù hợp trên top bar
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 
-    // Danh sách các item trong bottom navigation
     val items = listOf(
         BottomNavItem("Lệnh làm việc", Icons.Default.List, "work_orders"),
         BottomNavItem("Tài sản", Icons.Default.Star, "assets"),
@@ -95,37 +86,55 @@ fun MainScreen() {
         BottomNavItem("Hạng mục kho", Icons.Default.Edit, "inventory")
     )
 
-    // Tiêu đề hiển thị trên top bar, sẽ thay đổi theo route
     val currentTitle = items.find { it.route == currentRoute }?.label ?: "Lệnh làm việc"
 
-    // Scaffold để tạo cấu trúc UI với top bar, bottom bar và content
     Scaffold(
         topBar = { AppTopBar(title = currentTitle) },
         bottomBar = { AppBottomNavigation(navController) }
     ) { innerPadding ->
-        // NavHost sẽ chứa các màn hình và xác định các route
+
+        val user = FirebaseAuth.getInstance().currentUser
+        val email = user?.email ?: "Không rõ"
+        val name = user?.displayName ?: "Không rõ"
+
         NavHost(
             navController = navController,
-            startDestination = "work_orders", // Đặt màn hình mặc định là "work_orders"
+            startDestination = "work_orders",
             modifier = Modifier.padding(innerPadding)
         ) {
-            // Định nghĩa các route và các composable màn hình tương ứng
             composable("work_orders") {
-                WorkOrderScreen() // Màn hình cho route "work_orders"
+                WorkOrderScreen(
+                    email = email,
+                    name = name,
+                    onLogout = {
+                        FirebaseAuth.getInstance().signOut()
+                        navController.navigate("login") {
+                            popUpTo("home") { inclusive = true }
+                        }
+                    },
+                    onViewDetail = { workOrder ->
+                        // TODO: Điều hướng đến màn hình chi tiết work order
+                        // Ví dụ: navController.navigate("detail/${workOrder.id}")
+                    },
+                    onEdit = { workOrder ->
+                        // TODO: Điều hướng đến màn hình chỉnh sửa work order
+                        // Ví dụ: navController.navigate("edit/${workOrder.id}")
+                    }
+                )
             }
+
             composable("assets") {
                 val themeViewModel: ThemeViewModel = viewModel()
                 ThemeScreen()
-            // Màn hình cho route "assets"
             }
+
             composable("schedule") {
-//                ScheduleScreen() // Màn hình cho route "schedule"
+                // ScheduleScreen()
             }
+
             composable("inventory") {
-//                InventoryScreen() // Màn hình cho route "inventory"
+                // InventoryScreen()
             }
         }
     }
 }
-
-

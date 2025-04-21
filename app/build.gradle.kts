@@ -49,6 +49,7 @@ android {
 }
 
 dependencies {
+
     // Firebase dependencies với phiên bản cụ thể
     implementation("com.google.firebase:firebase-firestore-ktx")
     implementation(platform("com.google.firebase:firebase-bom:32.8.0")) // Sử dụng phiên bản mới nhất hợp lệ
@@ -73,4 +74,6 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    // Accompanist Navigation Animation
+    implementation("com.google.accompanist:accompanist-navigation-animation:0.33.2-alpha")
 }

@@ -1,26 +1,44 @@
 {
   "project_info": {
-    "project_number": "285389116296",
-    "project_id": "kotliapp",
-    "storage_bucket": "kotliapp.firebasestorage.app"
+    "project_number": "993129171430",
+    "project_id": "kotlin-app-ab21c",
+    "storage_bucket": "kotlin-app-ab21c.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:285389116296:android:bbaabf5fea0baf7a75e03d",
+        "mobilesdk_app_id": "1:993129171430:android:92bd8db93a2d9cb142ee27",
         "android_client_info": {
           "package_name": "com.example.kotlinapp"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "993129171430-1jag3oig9rk4u28m0vf992unp3jbh63q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kotlinapp",
+            "certificate_hash": "89fcb935ef577017e8356f912289328ec9876c84"
+          }
+        },
+        {
+          "client_id": "993129171430-gdat3mfe164a18590eb2s5m53svto41b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyCQKYxE5SIWt8VQqQz3A79q_uAvJ_p5LQk"
+          "current_key": "AIzaSyDCwF4cSA5mW9SJYPh5ICdaOjA4Z34W06o"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "993129171430-gdat3mfe164a18590eb2s5m53svto41b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
