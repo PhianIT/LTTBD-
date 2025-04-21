@@ -56,6 +56,11 @@ dependencies {
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.firebase:firebase-database-ktx")
     implementation("com.google.android.gms:play-services-auth:20.7.0") // Phiên bản mới nhất tính đến 2024, có thể kiểm tra lại
+    implementation("io.coil-kt:coil-compose:2.4.0")
+    implementation("io.coil-kt:coil-compose:2.4.0")
+    implementation("com.google.firebase:firebase-storage-ktx")
+    implementation("androidx.activity:activity-compose:1.7.2") // để sử dụng rememberLauncherForActivityResult
+    implementation("com.kizitonwose.calendar:compose:2.4.0")
 
     // AndroidX & Jetpack Compose
     implementation("androidx.core:core-ktx:1.12.0")
@@ -68,6 +73,7 @@ dependencies {
     implementation(libs.firebase.firestore.ktx)
     implementation(libs.androidx.navigation.runtime.android)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.firebase.storage.ktx)
 
     // Testing
     testImplementation("junit:junit:4.13.2")

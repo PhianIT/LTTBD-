@@ -1,4 +1,4 @@
-package com.example.kotlinapp.model
+package com.example.kotlinapp.user
 
 data class User(
     val id: String = "",

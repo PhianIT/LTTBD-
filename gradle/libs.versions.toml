@@ -17,6 +17,7 @@ appcompat = "1.7.0"
 firebase-firestore-ktx = "25.1.3"
 navigation-runtime-android = "2.9.0-alpha09"
 navigation-compose = "2.8.9"
+firebase-storage-ktx = "21.0.1"
 
 [libraries]
 android-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "gradle" }
@@ -59,3 +60,4 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebase-firestore-ktx" }
 androidx-navigation-runtime-android = { group = "androidx.navigation", name = "navigation-runtime-android", version.ref = "navigation-runtime-android" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation-compose" }
+firebase-storage-ktx = { group = "com.google.firebase", name = "firebase-storage-ktx", version.ref = "firebase-storage-ktx" }

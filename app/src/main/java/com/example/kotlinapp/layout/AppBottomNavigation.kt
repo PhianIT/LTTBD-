@@ -1,4 +1,4 @@
-package com.example.kotlinapp
+package com.example.kotlinapp.layout
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -38,12 +38,22 @@ fun AppBottomNavigation(navController: NavHostController) {
                 label = { Text(item.label) },
                 selected = currentRoute == item.route,
                 onClick = {
-                    navController.navigate(item.route) {
-                        popUpTo(navController.graph.startDestinationId) {
-                            saveState = true
+                    if (item.route == "work_orders") {
+                        navController.navigate("work_orders") {
+                            popUpTo("work_orders") {
+                                inclusive = true
+                            }
+                            launchSingleTop = true
+                            restoreState = true
                         }
-                        launchSingleTop = true
-                        restoreState = true
+                    } else {
+                        navController.navigate(item.route) {
+                            popUpTo(navController.graph.startDestinationId) {
+                                saveState = true
+                            }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
                     }
                 },
                 colors = NavigationBarItemDefaults.colors(

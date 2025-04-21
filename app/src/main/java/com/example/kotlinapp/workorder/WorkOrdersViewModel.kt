@@ -1,8 +1,7 @@
-package com.example.kotlinapp.viewmodel
+package com.example.kotlinapp.workorder
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.example.kotlinapp.model.WorkOrder
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -28,7 +27,8 @@ class WorkOrdersViewModel : ViewModel() {
                         assigned_to = doc.getString("assigned_to") ?: "",
                         created_at = doc.getTimestamp("created_at"),
                         due_date = doc.getTimestamp("due_date"),
-                        status = doc.getString("status") ?: ""
+                        status = doc.getString("status") ?: "",
+                        imageUrl = doc.getString("imageUrl")
                     )
                 }
                 _workOrders.value = list
@@ -37,8 +37,6 @@ class WorkOrdersViewModel : ViewModel() {
                 // TODO: handle error
             }
     }
-
-
     fun addWorkOrder(workOrder: WorkOrder) {
         val db = FirebaseFirestore.getInstance()
         val data = hashMapOf(
@@ -46,7 +44,8 @@ class WorkOrdersViewModel : ViewModel() {
             "description" to workOrder.description,
             "assigned_to" to workOrder.assigned_to,
             "created_at" to workOrder.created_at,
-            "due_date" to workOrder.due_date
+            "due_date" to workOrder.due_date,
+            "status" to "assigned",
         )
         db.collection("work_orders")
             .add(data)
@@ -57,7 +56,6 @@ class WorkOrdersViewModel : ViewModel() {
                 // TODO: Xử lý lỗi
             }
     }
-
     fun deleteWorkOrder(documentId: String) {
         val db = FirebaseFirestore.getInstance()
         db.collection("work_orders")
@@ -72,6 +70,30 @@ class WorkOrdersViewModel : ViewModel() {
                 Log.e("DeleteWorkOrder", "Lỗi khi xoá: ${e.message}")
             }
     }
+    fun fetchWorkOrderById(orderId: String, onResult: (WorkOrder?) -> Unit) {
+        val db = FirebaseFirestore.getInstance()
+        db.collection("work_orders").document(orderId).get()
+            .addOnSuccessListener { doc ->
+                if (doc.exists()) {
+                    val order = WorkOrder(
+                        id = doc.id,
+                        title = doc.getString("title") ?: "",
+                        description = doc.getString("description") ?: "",
+                        assigned_to = doc.getString("assigned_to") ?: "",
+                        created_at = doc.getTimestamp("created_at"),
+                        due_date = doc.getTimestamp("due_date"),
+                        status = doc.getString("status") ?: "",
+                    )
+                    onResult(order)
+                } else {
+                    onResult(null)
+                }
+            }
+            .addOnFailureListener {
+                onResult(null)
+            }
+    }
+
 
 
 }
