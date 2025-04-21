@@ -64,7 +64,7 @@ fun LoginScreen(
                                 val user = firebaseAuth.currentUser
                                 val email = user?.email ?: ""
                                 val name = user?.displayName ?: "User"
-                                SharedPreferencesHelper.saveUser(context, email, name) // Lưu vào SharedPreferences
+//                                SharedPreferencesHelper.saveUser(context, email, name) // Lưu vào SharedPreferences
                                 onLoginSuccess(email, name)
                             } else {
                                 Toast.makeText(context, "Google login failed", Toast.LENGTH_SHORT).show()

@@ -12,7 +12,28 @@
           "package_name": "com.example.kotlinapp"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "285389116296-97gsj92iaqgb3bv1gp5jnquga24v805t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kotlinapp",
+            "certificate_hash": "3eb92d56421bd879029dd975ba7eadd9720ddafb"
+          }
+        },
+        {
+          "client_id": "285389116296-chs4gra0cih962debuiurdov29r71cmm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kotlinapp",
+            "certificate_hash": "55f56f68f7c5e555d6ce753ec4e242a0ae9090c8"
+          }
+        },
+        {
+          "client_id": "285389116296-lsq4n0jkfg5k2jd3hkrrndid3rj7369e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCQKYxE5SIWt8VQqQz3A79q_uAvJ_p5LQk"
@@ -20,7 +41,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "285389116296-lsq4n0jkfg5k2jd3hkrrndid3rj7369e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

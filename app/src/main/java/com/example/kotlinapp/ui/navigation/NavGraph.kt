@@ -1,22 +1,26 @@
+// NavGraph.kt
 package com.example.kotlinapp.ui.navigation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
-import com.google.accompanist.navigation.animation.AnimatedNavHost
-import com.google.accompanist.navigation.animation.composable
 import androidx.navigation.navArgument
 import com.example.kotlinapp.ui.screen.login.LoginScreen
 import com.example.kotlinapp.ui.screen.signup.SignUpScreen
-import com.example.kotlinapp.ui.screen.profile.ProfileScreen
 import com.example.kotlinapp.ui.screen.splash.SplashScreen
+import com.example.kotlinapp.screens.MainScreen
+import com.google.accompanist.navigation.animation.AnimatedNavHost
+import com.google.accompanist.navigation.animation.composable
 import com.google.firebase.auth.FirebaseAuth
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun NavGraph(
@@ -51,9 +55,7 @@ fun NavGraph(
                 firebaseAuth = firebaseAuth,
                 onLoginSuccess = { email, name ->
                     val encodedEmail = URLEncoder.encode(email, StandardCharsets.UTF_8.toString())
-                    val encodedName = URLEncoder.encode(name, StandardCharsets.UTF_8.toString())
-
-                    navController.navigate("profile/$encodedEmail/$encodedName") {
+                    navController.navigate("main/$encodedEmail") {
                         popUpTo("login") { inclusive = true }
                     }
                 },
@@ -70,15 +72,14 @@ fun NavGraph(
                 firebaseAuth = firebaseAuth,
                 onLoginSuccess = { email, name ->
                     val encodedEmail = URLEncoder.encode(email, StandardCharsets.UTF_8.toString())
-                    val encodedName = URLEncoder.encode(name, StandardCharsets.UTF_8.toString())
-
-                    navController.navigate("profile/$encodedEmail/$encodedName") {
+                    navController.navigate("main/$encodedEmail") {
                         popUpTo("signup") { inclusive = true }
                     }
                 }
             )
         }
 
+        // ProfileScreen có thể vẫn giữ nếu bạn cần gọi nó từ MainScreen
         composable(
             "profile/{email}/{name}",
             arguments = listOf(
@@ -88,17 +89,23 @@ fun NavGraph(
         ) { backStackEntry ->
             val email = backStackEntry.arguments?.getString("email") ?: ""
             val name = backStackEntry.arguments?.getString("name") ?: ""
-
-            ProfileScreen(
+            com.example.kotlinapp.ui.screen.profile.ProfileScreen(
                 email = email,
                 name = name,
                 onLogout = {
                     navController.navigate("login") {
                         popUpTo("profile/{email}/{name}") { inclusive = true }
                     }
-
                 }
             )
+        }
+
+        composable(
+            "main/{userId}",
+            arguments = listOf(navArgument("userId") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val userId = backStackEntry.arguments?.getString("userId") ?: "user_001"
+            MainScreen(userId = userId)
         }
     }
 }

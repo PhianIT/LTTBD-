@@ -24,8 +24,10 @@ import com.example.kotlinapp.layout.AppTopBar
 import com.example.kotlinapp.layout.BottomNavItem
 import com.example.kotlinapp.schedule.ScheduleScreen
 import com.example.kotlinapp.ui.ThemeScreen
+import com.example.kotlinapp.ui.screen.profile.ProfileScreen
 import com.example.kotlinapp.user.ProfileScreen
 import com.example.kotlinapp.viewmodel.ThemeViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
@@ -76,10 +78,19 @@ fun MainScreen(userId: String = "user_001") {
                 val orderId = backStackEntry.arguments?.getString("orderId")
                 WorkOrderDetailScreen(orderId = orderId)
             }
-            composable("profile/{userId}") { backStackEntry ->
-//                val uid = backStackEntry.arguments?.getString("userId") ?: ""
-                val uid ="user_001"
-                ProfileScreen(userId = uid)
+            composable("profile/{userId}") { val firebaseUser = FirebaseAuth.getInstance().currentUser
+                val email = firebaseUser?.email ?: "Không có email"
+                val name = firebaseUser?.displayName ?: "Không có tên"
+
+                ProfileScreen(
+                    email = email,
+                    name = name,
+                    onLogout = {
+                        navController.navigate("login") {
+                            popUpTo("profile/{userId}") { inclusive = true }
+                        }
+                    }
+                )
             }
 
         }

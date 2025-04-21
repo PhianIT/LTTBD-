@@ -1,6 +1,7 @@
 // File: ui/screen/login/LoginViewModel.kt
 package com.example.kotlinapp.ui.screen.login
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
@@ -31,6 +32,7 @@ class LoginViewModel(
                     } else {
                         LoginUiState.Error(task.exception?.localizedMessage ?: "Đăng nhập thất bại")
                     }
+                    Log.e("LoginViewModel", "Login failed", task.exception)
                 }
         }
     }

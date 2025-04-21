@@ -66,7 +66,7 @@ fun SignUpScreen(
                                 val email = user?.email ?: ""
                                 val name = user?.displayName ?: "User"
                                 // ✅ Lưu thông tin user
-                                com.example.kotlinapp.util.SharedPreferencesHelper.saveUser(context, email, name)
+//                                com.example.kotlinapp.util.SharedPreferencesHelper.saveUser(context, email, name)
                                 onLoginSuccess(email, name)
                             } else {
                                 Toast.makeText(context, "Google login failed", Toast.LENGTH_SHORT).show()
