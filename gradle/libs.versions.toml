@@ -1,0 +1,63 @@
+[versions]
+android-gradle = "8.2.2"
+firebase-bom-version = "33.12.0"
+google-services = "4.4.2"
+google-services-version = "4.4.2"
+gradle-version = "8.2.2"
+kotlin = "1.9.22"
+gradle = "8.5.2"
+compose = "1.7.8"
+firebase-bom = "33.12.0"
+google-play-services-auth = "21.3.0"
+kotlin-gradle-plugin = "1.9.10"
+material3 = "1.2.1"
+play-services-auth = "20.7.0"
+ui-tooling-preview-android = "1.7.8"
+appcompat = "1.7.0"
+firebase-firestore-ktx = "25.1.3"
+navigation-runtime-android = "2.9.0-alpha09"
+navigation-compose = "2.8.9"
+firebase-storage-ktx = "21.0.1"
+
+[libraries]
+android-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "gradle" }
+androidx-material3-v121 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
+firebase-bom-v3271 = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom-version" }
+google-firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
+google-firebase-auth-ktx = { module = "com.google.firebase:firebase-auth-ktx" }
+google-services = { module = "com.google.gms:google-services", version.ref = "google-services" }
+google-services-v4315 = { module = "com.google.gms:google-services", version.ref = "google-services-version" }
+gradle-v820 = { module = "com.android.tools.build:gradle", version.ref = "gradle-version" }
+gradle-v822 = { module = "com.android.tools.build:gradle", version.ref = "android-gradle" }
+kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+
+# Firebase BOM quản lý các thư viện Firebase
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebase-bom" }
+firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx", version.ref = "firebase-bom" }
+firebase-database-ktx = { group = "com.google.firebase", name = "firebase-database-ktx", version.ref = "firebase-bom" }
+firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics-ktx", version.ref = "firebase-bom" }
+
+# Google Sign-In
+google-play-services-auth = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "google-play-services-auth" }
+
+# AndroidX
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.15.0" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version = "2.8.7" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.10.1" }
+
+# UI - Jetpack Compose
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "compose" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version = "1.3.1" }
+
+# Testing
+junit = { group = "junit", name = "junit", version = "4.13.2" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version = "1.2.1" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version = "3.6.1" }
+kotlin-gradle-plugin-v1910 = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin-gradle-plugin" }
+play-services-auth-v2070 = { module = "com.google.android.gms:play-services-auth", version.ref = "play-services-auth" }
+androidx-ui-tooling-preview-android = { group = "androidx.compose.ui", name = "ui-tooling-preview-android", version.ref = "ui-tooling-preview-android" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebase-firestore-ktx" }
+androidx-navigation-runtime-android = { group = "androidx.navigation", name = "navigation-runtime-android", version.ref = "navigation-runtime-android" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation-compose" }
+firebase-storage-ktx = { group = "com.google.firebase", name = "firebase-storage-ktx", version.ref = "firebase-storage-ktx" }
