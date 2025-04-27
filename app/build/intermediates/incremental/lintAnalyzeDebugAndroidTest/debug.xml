@@ -1,0 +1,31 @@
+<variant
+    name="debug"
+    useSupportLibraryVectorDrawables="true"
+    package="com.example.kotlinapp"
+    minSdkVersion="24"
+    targetSdkVersion="35"
+    debuggable="true"
+    mergedManifest="build\intermediates\merged_manifest\debug\processDebugMainManifest\AndroidManifest.xml"
+    partialResultsDir="build\intermediates\android_test_lint_partial_results\debug\lintAnalyzeDebugAndroidTest\out"
+    desugaredMethodsFiles="C:\Users\Admin\.gradle\caches\8.10\transforms\138511ecdff1607a6b492b352e47669c\transformed\D8BackportedDesugaredMethods.txt">
+  <buildFeatures
+      namespacing="REQUIRED"/>
+  <sourceProviders>
+  </sourceProviders>
+  <testSourceProviders>
+    <sourceProvider
+        manifests="src\androidTest\AndroidManifest.xml"
+        javaDirectories="src\androidTest\java;src\androidTestDebug\java;src\androidTest\kotlin;src\androidTestDebug\kotlin"
+        resDirectories="src\androidTest\res;src\androidTestDebug\res"
+        assetsDirectories="src\androidTest\assets;src\androidTestDebug\assets"
+        androidTest="true"/>
+  </testSourceProviders>
+  <testFixturesSourceProviders>
+  </testFixturesSourceProviders>
+  <artifact
+      type="INSTRUMENTATION_TEST"
+      applicationId="com.example.kotlinapp.test"
+      generatedResourceFolders="build\generated\res\resValues\androidTest\debug"
+      desugaredMethodsFiles="C:\Users\Admin\.gradle\caches\8.10\transforms\138511ecdff1607a6b492b352e47669c\transformed\D8BackportedDesugaredMethods.txt">
+  </artifact>
+</variant>

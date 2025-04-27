@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.7.3" type="incidents">
+
+    <incident
+        id="AndroidGradlePluginVersion"
+        severity="warning"
+        message="A newer version of com.android.tools.build:gradle than 8.2.2 is available: 8.9.1">
+        <fix-replace
+            description="Change to 8.9.1"
+            family="Update versions"
+            oldString="8.2.2"
+            replacement="8.9.1"
+            priority="0"/>
+        <location
+            file="../gradle/libs.versions.toml"
+            line="2"
+            column="18"
+            startOffset="29"
+            endLine="2"
+            endColumn="25"
+            endOffset="36"/>
+    </incident>
+
+    <incident
+        id="AndroidGradlePluginVersion"
+        severity="warning"
+        message="A newer version of com.android.tools.build:gradle than 8.2.2 is available: 8.9.1">
+        <fix-replace
+            description="Change to 8.9.1"
+            family="Update versions"
+            oldString="8.2.2"
+            replacement="8.9.1"
+            priority="0"/>
+        <location
+            file="../gradle/libs.versions.toml"
+            line="6"
+            column="18"
+            startOffset="151"
+            endLine="6"
+            endColumn="25"
+            endOffset="158"/>
+    </incident>
+
+    <incident
+        id="AndroidGradlePluginVersion"
+        severity="warning"
+        message="A newer version of com.android.tools.build:gradle than 8.5.2 is available: 8.9.1">
+        <fix-replace
+            description="Change to 8.9.1"
+            family="Update versions"
+            oldString="8.5.2"
+            replacement="8.9.1"
+            priority="0"/>
+        <location
+            file="../gradle/libs.versions.toml"
+            line="8"
+            column="10"
+            startOffset="188"
+            endLine="8"
+            endColumn="17"
+            endOffset="195"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.compose.material3:material3 than 1.2.1 is available: 1.3.1">
+        <fix-replace
+            description="Change to 1.3.1"
+            family="Update versions"
+            oldString="1.2.1"
+            replacement="1.3.1"
+            priority="0"/>
+        <location
+            file="../gradle/libs.versions.toml"
+            line="13"
+            column="13"
+            startOffset="325"
+            endLine="13"
+            endColumn="20"
+            endOffset="332"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.google.android.gms:play-services-auth than 20.7.0 is available: 21.3.0">
+        <fix-replace
+            description="Change to 21.3.0"
+            family="Update versions"
+            oldString="20.7.0"
+            replacement="21.3.0"
+            priority="0"/>
+        <location
+            file="../gradle/libs.versions.toml"
+            line="14"
+            column="22"
+            startOffset="355"
+            endLine="14"
+            endColumn="30"
+            endOffset="363"/>
+    </incident>
+
+    <incident
+        id="SimilarGradleDependency"
+        severity="informational"
+        message="There are multiple dependencies com.android.tools.build:gradle but with different version">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="22"
+            column="26"
+            startOffset="575"
+            endLine="22"
+            endColumn="103"
+            endOffset="652"/>
+    </incident>
+
+    <incident
+        id="SimilarGradleDependency"
+        severity="informational"
+        message="There are multiple dependencies androidx.compose.material3:material3 but with different version">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="23"
+            column="28"
+            startOffset="681"
+            endLine="23"
+            endColumn="105"
+            endOffset="758"/>
+    </incident>
+
+    <incident
+        id="SimilarGradleDependency"
+        severity="informational"
+        message="There are multiple dependencies com.google.firebase:firebase-bom but with different version">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="24"
+            column="23"
+            startOffset="782"
+            endLine="24"
+            endColumn="107"
+            endOffset="866"/>
+    </incident>
+
+    <incident
+        id="SimilarGradleDependency"
+        severity="informational"
+        message="There are multiple dependencies com.google.gms:google-services but with different version">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="27"
+            column="20"
+            startOffset="1051"
+            endLine="27"
+            endColumn="97"
+            endOffset="1128"/>
+    </incident>
+
+    <incident
+        id="SimilarGradleDependency"
+        severity="informational"
+        message="There are multiple dependencies com.google.gms:google-services but with different version">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="28"
+            column="26"
+            startOffset="1155"
+            endLine="28"
+            endColumn="111"
+            endOffset="1240"/>
+    </incident>
+
+    <incident
+        id="SimilarGradleDependency"
+        severity="informational"
+        message="There are multiple dependencies com.android.tools.build:gradle but with different version">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="29"
+            column="16"
+            startOffset="1257"
+            endLine="29"
+            endColumn="92"
+            endOffset="1333"/>
+    </incident>
+
+    <incident
+        id="SimilarGradleDependency"
+        severity="informational"
+        message="There are multiple dependencies com.android.tools.build:gradle but with different version">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="30"
+            column="16"
+            startOffset="1350"
+            endLine="30"
+            endColumn="92"
+            endOffset="1426"/>
+    </incident>
+
+    <incident
+        id="SimilarGradleDependency"
+        severity="informational"
+        message="There are multiple dependencies org.jetbrains.kotlin:kotlin-gradle-plugin but with different version">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="31"
+            column="25"
+            startOffset="1452"
+            endLine="31"
+            endColumn="113"
+            endOffset="1540"/>
+    </incident>
+
+    <incident
+        id="SimilarGradleDependency"
+        severity="informational"
+        message="There are multiple dependencies com.google.firebase:firebase-bom but with different version">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="34"
+            column="17"
+            startOffset="1606"
+            endLine="34"
+            endColumn="102"
+            endOffset="1691"/>
+    </incident>
+
+    <incident
+        id="SimilarGradleDependency"
+        severity="informational"
+        message="There are multiple dependencies com.google.android.gms:play-services-auth but with different version">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="40"
+            column="30"
+            startOffset="2095"
+            endLine="40"
+            endColumn="137"
+            endOffset="2202"/>
+    </incident>
+
+    <incident
+        id="SimilarGradleDependency"
+        severity="informational"
+        message="There are multiple dependencies androidx.compose.material3:material3 but with different version">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="49"
+            column="31"
+            startOffset="2683"
+            endLine="49"
+            endColumn="109"
+            endOffset="2761"/>
+    </incident>
+
+    <incident
+        id="SimilarGradleDependency"
+        severity="informational"
+        message="There are multiple dependencies org.jetbrains.kotlin:kotlin-gradle-plugin but with different version">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="55"
+            column="31"
+            startOffset="3062"
+            endLine="55"
+            endColumn="124"
+            endOffset="3155"/>
+    </incident>
+
+    <incident
+        id="SimilarGradleDependency"
+        severity="informational"
+        message="There are multiple dependencies com.google.android.gms:play-services-auth but with different version">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="56"
+            column="29"
+            startOffset="3185"
+            endLine="56"
+            endColumn="120"
+            endOffset="3276"/>
+    </incident>
+
+</incidents>

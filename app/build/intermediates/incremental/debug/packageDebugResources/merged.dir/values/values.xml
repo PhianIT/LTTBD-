@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">kotlinapp</string>
+    <string name="default_web_client_id" translatable="false">285389116296-lsq4n0jkfg5k2jd3hkrrndid3rj7369e.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">285389116296</string>
+    <string name="google_api_key" translatable="false">AIzaSyCQKYxE5SIWt8VQqQz3A79q_uAvJ_p5LQk</string>
+    <string name="google_app_id" translatable="false">1:285389116296:android:bbaabf5fea0baf7a75e03d</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCQKYxE5SIWt8VQqQz3A79q_uAvJ_p5LQk</string>
+    <string name="google_storage_bucket" translatable="false">kotliapp.firebasestorage.app</string>
+    <string name="project_id" translatable="false">kotliapp</string>
+    <style name="Theme.Kotlinapp" parent="Theme.AppCompat.Light.NoActionBar"/>
+</resources>

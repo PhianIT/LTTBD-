@@ -1,0 +1,122 @@
+[
+    {
+        "merged": "com.example.kotlinapp-debug-63:/drawable_ic_lock.png.flat",
+        "source": "com.example.kotlinapp-main-65:/drawable/ic_lock.png"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.kotlinapp-main-65:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.kotlinapp-main-65:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/drawable_ic_eye_off.png.flat",
+        "source": "com.example.kotlinapp-main-65:/drawable/ic_eye_off.png"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.kotlinapp-main-65:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.kotlinapp-main-65:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.kotlinapp-main-65:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.kotlinapp-main-65:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.kotlinapp-main-65:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.kotlinapp-main-65:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/layout-sw600dp_activity_main.xml.flat",
+        "source": "com.example.kotlinapp-main-65:/layout-sw600dp/activity_main.xml"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/drawable_uth_logo.jpg.flat",
+        "source": "com.example.kotlinapp-main-65:/drawable/uth_logo.jpg"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/drawable_ic_eye.png.flat",
+        "source": "com.example.kotlinapp-main-65:/drawable/ic_eye.png"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/drawable_ic_facebook.png.flat",
+        "source": "com.example.kotlinapp-main-65:/drawable/ic_facebook.png"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.kotlinapp-main-65:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.kotlinapp-main-65:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/drawable_ic_user.png.flat",
+        "source": "com.example.kotlinapp-main-65:/drawable/ic_user.png"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.kotlinapp-main-65:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.kotlinapp-main-65:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/drawable_logo_tech_aid.png.flat",
+        "source": "com.example.kotlinapp-main-65:/drawable/logo_tech_aid.png"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/drawable_logo_ai.png.flat",
+        "source": "com.example.kotlinapp-main-65:/drawable/logo_ai.png"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.kotlinapp-main-65:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/drawable_profile_placeholder.jpg.flat",
+        "source": "com.example.kotlinapp-main-65:/drawable/profile_placeholder.jpg"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/layout-land_activity_main.xml.flat",
+        "source": "com.example.kotlinapp-main-65:/layout-land/activity_main.xml"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/drawable_ic_google.png.flat",
+        "source": "com.example.kotlinapp-main-65:/drawable/ic_google.png"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.kotlinapp-main-65:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/xml_backup_rules.xml.flat",
+        "source": "com.example.kotlinapp-main-65:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.kotlinapp-main-65:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/layout_activity_main.xml.flat",
+        "source": "com.example.kotlinapp-main-65:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.kotlinapp-debug-63:/drawable_ic_camera.png.flat",
+        "source": "com.example.kotlinapp-main-65:/drawable/ic_camera.png"
+    }
+]

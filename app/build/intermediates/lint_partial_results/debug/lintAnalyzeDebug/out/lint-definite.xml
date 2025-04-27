@@ -1,0 +1,1415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.7.3" type="incidents">
+
+    <incident
+        id="OldTargetApi"
+        severity="warning"
+        message="Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the `android.os.Build.VERSION_CODES` javadoc for details.">
+        <fix-replace
+            description="Update targetSdkVersion to 36"
+            oldString="35"
+            replacement="36"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="15"
+            column="9"
+            startOffset="375"
+            endLine="15"
+            endColumn="23"
+            endOffset="389"/>
+    </incident>
+
+    <incident
+        id="RedundantLabel"
+        severity="warning"
+        message="Redundant label can be removed">
+        <fix-attribute
+            description="Delete label"
+            namespace="http://schemas.android.com/apk/res/android"
+            attribute="label"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*manifest*0}"
+            line="19"
+            column="13"
+            startOffset="765"
+            endLine="19"
+            endColumn="45"
+            endOffset="797"/>
+    </incident>
+
+    <incident
+        id="AndroidGradlePluginVersion"
+        severity="warning"
+        message="A newer version of com.android.tools.build:gradle than 8.2.2 is available: 8.9.1">
+        <fix-replace
+            description="Change to 8.9.1"
+            family="Update versions"
+            oldString="8.2.2"
+            replacement="8.9.1"
+            priority="0"/>
+        <location
+            file="../gradle/libs.versions.toml"
+            line="2"
+            column="18"
+            startOffset="29"
+            endLine="2"
+            endColumn="25"
+            endOffset="36"/>
+    </incident>
+
+    <incident
+        id="AndroidGradlePluginVersion"
+        severity="warning"
+        message="A newer version of com.android.tools.build:gradle than 8.2.2 is available: 8.9.1">
+        <fix-replace
+            description="Change to 8.9.1"
+            family="Update versions"
+            oldString="8.2.2"
+            replacement="8.9.1"
+            priority="0"/>
+        <location
+            file="../gradle/libs.versions.toml"
+            line="6"
+            column="18"
+            startOffset="151"
+            endLine="6"
+            endColumn="25"
+            endOffset="158"/>
+    </incident>
+
+    <incident
+        id="AndroidGradlePluginVersion"
+        severity="warning"
+        message="A newer version of com.android.tools.build:gradle than 8.5.2 is available: 8.9.1">
+        <fix-replace
+            description="Change to 8.9.1"
+            family="Update versions"
+            oldString="8.5.2"
+            replacement="8.9.1"
+            priority="0"/>
+        <location
+            file="../gradle/libs.versions.toml"
+            line="8"
+            column="10"
+            startOffset="188"
+            endLine="8"
+            endColumn="17"
+            endOffset="195"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of org.jetbrains.kotlin.plugin.compose than 2.0.0 is available: 2.0.21">
+        <fix-replace
+            description="Change to 2.0.21"
+            family="Update versions"
+            oldString="2.0.0"
+            replacement="2.0.21"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="5"
+            column="55"
+            startOffset="197"
+            endLine="5"
+            endColumn="62"
+            endOffset="204"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.google.firebase:firebase-bom than 32.8.0 is available: 33.12.0">
+        <fix-replace
+            description="Change to 33.12.0"
+            family="Update versions"
+            oldString="32.8.0"
+            replacement="33.12.0"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="54"
+            column="20"
+            startOffset="1343"
+            endLine="54"
+            endColumn="71"
+            endOffset="1394"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.google.android.gms:play-services-auth than 20.7.0 is available: 21.3.0">
+        <fix-replace
+            description="Change to 21.3.0"
+            family="Update versions"
+            oldString="20.7.0"
+            replacement="21.3.0"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="58"
+            column="20"
+            startOffset="1641"
+            endLine="58"
+            endColumn="70"
+            endOffset="1691"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.core:core-ktx than 1.12.0 is available: 1.15.0">
+        <fix-replace
+            description="Change to 1.15.0"
+            family="Update versions"
+            oldString="1.12.0"
+            replacement="1.15.0"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="61"
+            column="20"
+            startOffset="1804"
+            endLine="61"
+            endColumn="51"
+            endOffset="1835"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.lifecycle:lifecycle-runtime-ktx than 2.7.0 is available: 2.8.7">
+        <fix-replace
+            description="Change to 2.8.7"
+            family="Update versions"
+            oldString="2.7.0"
+            replacement="2.8.7"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="62"
+            column="20"
+            startOffset="1856"
+            endLine="62"
+            endColumn="68"
+            endOffset="1904"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.activity:activity-compose than 1.8.2 is available: 1.10.1">
+        <fix-replace
+            description="Change to 1.10.1"
+            family="Update versions"
+            oldString="1.8.2"
+            replacement="1.10.1"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="63"
+            column="20"
+            startOffset="1925"
+            endLine="63"
+            endColumn="62"
+            endOffset="1967"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.compose.ui:ui than 1.6.4 is available: 1.7.8">
+        <fix-replace
+            description="Change to 1.7.8"
+            family="Update versions"
+            oldString="1.6.4"
+            replacement="1.7.8"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="64"
+            column="20"
+            startOffset="1988"
+            endLine="64"
+            endColumn="50"
+            endOffset="2018"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.compose.ui:ui-tooling-preview than 1.6.4 is available: 1.7.8">
+        <fix-replace
+            description="Change to 1.7.8"
+            family="Update versions"
+            oldString="1.6.4"
+            replacement="1.7.8"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="66"
+            column="20"
+            startOffset="2088"
+            endLine="66"
+            endColumn="66"
+            endOffset="2134"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.appcompat:appcompat than 1.6.1 is available: 1.7.0">
+        <fix-replace
+            description="Change to 1.7.0"
+            family="Update versions"
+            oldString="1.6.1"
+            replacement="1.7.0"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="67"
+            column="20"
+            startOffset="2155"
+            endLine="67"
+            endColumn="56"
+            endOffset="2191"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.test.ext:junit than 1.1.5 is available: 1.2.1">
+        <fix-replace
+            description="Change to 1.2.1"
+            family="Update versions"
+            oldString="1.1.5"
+            replacement="1.2.1"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="74"
+            column="31"
+            startOffset="2446"
+            endLine="74"
+            endColumn="62"
+            endOffset="2477"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.test.espresso:espresso-core than 3.5.1 is available: 3.6.1">
+        <fix-replace
+            description="Change to 3.6.1"
+            family="Update versions"
+            oldString="3.5.1"
+            replacement="3.6.1"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="75"
+            column="31"
+            startOffset="2509"
+            endLine="75"
+            endColumn="75"
+            endOffset="2553"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.compose.material3:material3 than 1.2.1 is available: 1.3.1">
+        <fix-replace
+            description="Change to 1.3.1"
+            family="Update versions"
+            oldString="1.2.1"
+            replacement="1.3.1"
+            priority="0"/>
+        <location
+            file="../gradle/libs.versions.toml"
+            line="13"
+            column="13"
+            startOffset="325"
+            endLine="13"
+            endColumn="20"
+            endOffset="332"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.google.android.gms:play-services-auth than 20.7.0 is available: 21.3.0">
+        <fix-replace
+            description="Change to 21.3.0"
+            family="Update versions"
+            oldString="20.7.0"
+            replacement="21.3.0"
+            priority="0"/>
+        <location
+            file="../gradle/libs.versions.toml"
+            line="14"
+            column="22"
+            startOffset="355"
+            endLine="14"
+            endColumn="30"
+            endOffset="363"/>
+    </incident>
+
+    <incident
+        id="SimilarGradleDependency"
+        severity="informational"
+        message="There are multiple dependencies com.android.tools.build:gradle but with different version">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="22"
+            column="26"
+            startOffset="575"
+            endLine="22"
+            endColumn="103"
+            endOffset="652"/>
+    </incident>
+
+    <incident
+        id="SimilarGradleDependency"
+        severity="informational"
+        message="There are multiple dependencies androidx.compose.material3:material3 but with different version">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="23"
+            column="28"
+            startOffset="681"
+            endLine="23"
+            endColumn="105"
+            endOffset="758"/>
+    </incident>
+
+    <incident
+        id="SimilarGradleDependency"
+        severity="informational"
+        message="There are multiple dependencies com.google.firebase:firebase-bom but with different version">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="24"
+            column="23"
+            startOffset="782"
+            endLine="24"
+            endColumn="107"
+            endOffset="866"/>
+    </incident>
+
+    <incident
+        id="SimilarGradleDependency"
+        severity="informational"
+        message="There are multiple dependencies com.google.gms:google-services but with different version">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="27"
+            column="20"
+            startOffset="1051"
+            endLine="27"
+            endColumn="97"
+            endOffset="1128"/>
+    </incident>
+
+    <incident
+        id="SimilarGradleDependency"
+        severity="informational"
+        message="There are multiple dependencies com.google.gms:google-services but with different version">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="28"
+            column="26"
+            startOffset="1155"
+            endLine="28"
+            endColumn="111"
+            endOffset="1240"/>
+    </incident>
+
+    <incident
+        id="SimilarGradleDependency"
+        severity="informational"
+        message="There are multiple dependencies com.android.tools.build:gradle but with different version">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="29"
+            column="16"
+            startOffset="1257"
+            endLine="29"
+            endColumn="92"
+            endOffset="1333"/>
+    </incident>
+
+    <incident
+        id="SimilarGradleDependency"
+        severity="informational"
+        message="There are multiple dependencies com.android.tools.build:gradle but with different version">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="30"
+            column="16"
+            startOffset="1350"
+            endLine="30"
+            endColumn="92"
+            endOffset="1426"/>
+    </incident>
+
+    <incident
+        id="SimilarGradleDependency"
+        severity="informational"
+        message="There are multiple dependencies org.jetbrains.kotlin:kotlin-gradle-plugin but with different version">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="31"
+            column="25"
+            startOffset="1452"
+            endLine="31"
+            endColumn="113"
+            endOffset="1540"/>
+    </incident>
+
+    <incident
+        id="SimilarGradleDependency"
+        severity="informational"
+        message="There are multiple dependencies com.google.firebase:firebase-bom but with different version">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="34"
+            column="17"
+            startOffset="1606"
+            endLine="34"
+            endColumn="102"
+            endOffset="1691"/>
+    </incident>
+
+    <incident
+        id="SimilarGradleDependency"
+        severity="informational"
+        message="There are multiple dependencies com.google.android.gms:play-services-auth but with different version">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="40"
+            column="30"
+            startOffset="2095"
+            endLine="40"
+            endColumn="137"
+            endOffset="2202"/>
+    </incident>
+
+    <incident
+        id="SimilarGradleDependency"
+        severity="informational"
+        message="There are multiple dependencies androidx.compose.material3:material3 but with different version">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="49"
+            column="31"
+            startOffset="2683"
+            endLine="49"
+            endColumn="109"
+            endOffset="2761"/>
+    </incident>
+
+    <incident
+        id="SimilarGradleDependency"
+        severity="informational"
+        message="There are multiple dependencies org.jetbrains.kotlin:kotlin-gradle-plugin but with different version">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="55"
+            column="31"
+            startOffset="3062"
+            endLine="55"
+            endColumn="124"
+            endOffset="3155"/>
+    </incident>
+
+    <incident
+        id="SimilarGradleDependency"
+        severity="informational"
+        message="There are multiple dependencies com.google.android.gms:play-services-auth but with different version">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="56"
+            column="29"
+            startOffset="3185"
+            endLine="56"
+            endColumn="120"
+            endOffset="3276"/>
+    </incident>
+
+    <incident
+        id="IconLocation"
+        severity="warning"
+        message="Found bitmap drawable `res/drawable/profile_placeholder.jpg` in densityless folder">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/drawable/profile_placeholder.jpg"/>
+    </incident>
+
+    <incident
+        id="IconLocation"
+        severity="warning"
+        message="Found bitmap drawable `res/drawable/uth_logo.jpg` in densityless folder">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/drawable/uth_logo.jpg"/>
+    </incident>
+
+    <incident
+        id="IconDuplicates"
+        severity="warning"
+        message="The following unrelated icon files have identical contents: profile_placeholder.jpg, uth_logo.jpg">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/drawable/uth_logo.jpg"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/drawable/profile_placeholder.jpg"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead (com.google.firebase:firebase-firestore-ktx is already available as `firebase-firestore-ktx`, but using version 25.1.3 instead)">
+        <fix-alternatives>
+            <fix-composite
+                description="Replace with new library catalog declaration for com-google-firebase-firebase-firestore-ktx"
+                robot="true"
+                independent="true">
+                <fix-replace
+                    description="Replace with com-google-firebase-firebase-firestore-ktx = { module = &quot;com.google.firebase:firebase-firestore-ktx&quot; }..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="com-google-firebase-firebase-firestore-ktx = { module = &quot;com.google.firebase:firebase-firestore-ktx&quot; }&#xA;"
+                    priority="0">
+                    <range
+                        file="../gradle/libs.versions.toml"
+                        startOffset="760"
+                        endOffset="760"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with libs.com.google.firebase.firebase.firestore.ktx"
+                    robot="true"
+                    independent="true"
+                    replacement="libs.com.google.firebase.firebase.firestore.ktx"
+                    priority="0">
+                    <range
+                        file="${:app*projectDir}/build.gradle.kts"
+                        startOffset="1278"
+                        endOffset="1322"/>
+                </fix-replace>
+            </fix-composite>
+            <fix-replace
+                description="Replace with existing version catalog reference `firebase-firestore-ktx` (version 25.1.3)"
+                replacement="libs.firebase.firestore.ktx"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="1278"
+                    endOffset="1322"/>
+            </fix-replace>
+        </fix-alternatives>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="53"
+            column="20"
+            startOffset="1278"
+            endLine="53"
+            endColumn="64"
+            endOffset="1322"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead (com.google.firebase:firebase-bom is already available as `firebase-bom-v3271`, but using version 33.12.0 instead)">
+        <fix-alternatives>
+            <fix-composite
+                description="Replace with new library catalog declaration for google-firebase-bom-v3280"
+                robot="true"
+                independent="true">
+                <fix-replace
+                    description="Replace with google-firebase-bom-version = &quot;32.8.0&quot;..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="google-firebase-bom-version = &quot;32.8.0&quot;&#xA;"
+                    priority="0">
+                    <range
+                        file="../gradle/libs.versions.toml"
+                        startOffset="72"
+                        endOffset="72"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with google-firebase-bom-v3280 = { module = &quot;com.google.firebase:firebase-bom&quot;, version.ref = &quot;google-firebase-bom-version&quot; }..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="google-firebase-bom-v3280 = { module = &quot;com.google.firebase:firebase-bom&quot;, version.ref = &quot;google-firebase-bom-version&quot; }&#xA;"
+                    priority="0">
+                    <range
+                        file="../gradle/libs.versions.toml"
+                        startOffset="1032"
+                        endOffset="1032"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with libs.google.firebase.bom.v3280"
+                    robot="true"
+                    independent="true"
+                    replacement="libs.google.firebase.bom.v3280"
+                    priority="0">
+                    <range
+                        file="${:app*projectDir}/build.gradle.kts"
+                        startOffset="1343"
+                        endOffset="1394"/>
+                </fix-replace>
+            </fix-composite>
+            <fix-replace
+                description="Replace with existing version catalog reference `firebase-bom-v3271` (version 33.12.0)"
+                replacement="libs.firebase.bom.v3271"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="1343"
+                    endOffset="1394"/>
+            </fix-replace>
+        </fix-alternatives>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="54"
+            column="20"
+            startOffset="1343"
+            endLine="54"
+            endColumn="71"
+            endOffset="1394"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead (com.google.firebase:firebase-analytics-ktx is already available as `firebase-analytics`, but using version 33.12.0 instead)">
+        <fix-alternatives>
+            <fix-composite
+                description="Replace with new library catalog declaration for google-firebase-analytics-ktx"
+                robot="true"
+                independent="true">
+                <fix-replace
+                    description="Replace with google-firebase-analytics-ktx = { module = &quot;com.google.firebase:firebase-analytics-ktx&quot; }..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="google-firebase-analytics-ktx = { module = &quot;com.google.firebase:firebase-analytics-ktx&quot; }&#xA;"
+                    priority="0">
+                    <range
+                        file="../gradle/libs.versions.toml"
+                        startOffset="951"
+                        endOffset="951"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with libs.google.firebase.analytics.ktx"
+                    robot="true"
+                    independent="true"
+                    replacement="libs.google.firebase.analytics.ktx"
+                    priority="0">
+                    <range
+                        file="${:app*projectDir}/build.gradle.kts"
+                        startOffset="1452"
+                        endOffset="1496"/>
+                </fix-replace>
+            </fix-composite>
+            <fix-replace
+                description="Replace with existing version catalog reference `firebase-analytics` (version 33.12.0)"
+                replacement="libs.firebase.analytics"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="1452"
+                    endOffset="1496"/>
+            </fix-replace>
+        </fix-alternatives>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="55"
+            column="20"
+            startOffset="1452"
+            endLine="55"
+            endColumn="64"
+            endOffset="1496"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead (com.google.firebase:firebase-auth-ktx is already available as `firebase-auth-ktx`, but using version 33.12.0 instead)">
+        <fix-alternatives>
+            <fix-composite
+                description="Replace with new library catalog declaration for com-google-firebase-firebase-auth-ktx2"
+                robot="true"
+                independent="true">
+                <fix-replace
+                    description="Replace with com-google-firebase-firebase-auth-ktx2 = { module = &quot;com.google.firebase:firebase-auth-ktx&quot; }..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="com-google-firebase-firebase-auth-ktx2 = { module = &quot;com.google.firebase:firebase-auth-ktx&quot; }&#xA;"
+                    priority="0">
+                    <range
+                        file="../gradle/libs.versions.toml"
+                        startOffset="760"
+                        endOffset="760"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with libs.com.google.firebase.firebase.auth.ktx2"
+                    robot="true"
+                    independent="true"
+                    replacement="libs.com.google.firebase.firebase.auth.ktx2"
+                    priority="0">
+                    <range
+                        file="${:app*projectDir}/build.gradle.kts"
+                        startOffset="1517"
+                        endOffset="1556"/>
+                </fix-replace>
+            </fix-composite>
+            <fix-replace
+                description="Replace with existing version catalog reference `firebase-auth-ktx` (version 33.12.0)"
+                replacement="libs.firebase.auth.ktx"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="1517"
+                    endOffset="1556"/>
+            </fix-replace>
+        </fix-alternatives>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="56"
+            column="20"
+            startOffset="1517"
+            endLine="56"
+            endColumn="59"
+            endOffset="1556"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead (com.google.firebase:firebase-database-ktx is already available as `firebase-database-ktx`, but using version 33.12.0 instead)">
+        <fix-alternatives>
+            <fix-composite
+                description="Replace with new library catalog declaration for com-google-firebase-firebase-database-ktx"
+                robot="true"
+                independent="true">
+                <fix-replace
+                    description="Replace with com-google-firebase-firebase-database-ktx = { module = &quot;com.google.firebase:firebase-database-ktx&quot; }..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="com-google-firebase-firebase-database-ktx = { module = &quot;com.google.firebase:firebase-database-ktx&quot; }&#xA;"
+                    priority="0">
+                    <range
+                        file="../gradle/libs.versions.toml"
+                        startOffset="760"
+                        endOffset="760"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with libs.com.google.firebase.firebase.database.ktx"
+                    robot="true"
+                    independent="true"
+                    replacement="libs.com.google.firebase.firebase.database.ktx"
+                    priority="0">
+                    <range
+                        file="${:app*projectDir}/build.gradle.kts"
+                        startOffset="1577"
+                        endOffset="1620"/>
+                </fix-replace>
+            </fix-composite>
+            <fix-replace
+                description="Replace with existing version catalog reference `firebase-database-ktx` (version 33.12.0)"
+                replacement="libs.firebase.database.ktx"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="1577"
+                    endOffset="1620"/>
+            </fix-replace>
+        </fix-alternatives>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="57"
+            column="20"
+            startOffset="1577"
+            endLine="57"
+            endColumn="63"
+            endOffset="1620"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use the existing version catalog reference (`libs.play.services.auth.v2070`) instead">
+        <fix-replace
+            description="Replace with existing version catalog reference `play-services-auth-v2070`"
+            robot="true"
+            independent="true"
+            replacement="libs.play.services.auth.v2070"
+            priority="0">
+            <range
+                file="${:app*projectDir}/build.gradle.kts"
+                startOffset="1641"
+                endOffset="1691"/>
+        </fix-replace>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="58"
+            column="20"
+            startOffset="1641"
+            endLine="58"
+            endColumn="70"
+            endOffset="1691"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead (androidx.core:core-ktx is already available as `androidx-core-ktx`, but using version 1.15.0 instead)">
+        <fix-alternatives>
+            <fix-composite
+                description="Replace with new library catalog declaration for core-ktx-v1120"
+                robot="true"
+                independent="true">
+                <fix-replace
+                    description="Replace with core-ktx-version = &quot;1.12.0&quot;..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="core-ktx-version = &quot;1.12.0&quot;&#xA;"
+                    priority="0">
+                    <range
+                        file="../gradle/libs.versions.toml"
+                        startOffset="38"
+                        endOffset="38"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with core-ktx-v1120 = { module = &quot;androidx.core:core-ktx&quot;, version.ref = &quot;core-ktx-version&quot; }..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="core-ktx-v1120 = { module = &quot;androidx.core:core-ktx&quot;, version.ref = &quot;core-ktx-version&quot; }&#xA;"
+                    priority="0">
+                    <range
+                        file="../gradle/libs.versions.toml"
+                        startOffset="760"
+                        endOffset="760"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with libs.core.ktx.v1120"
+                    robot="true"
+                    independent="true"
+                    replacement="libs.core.ktx.v1120"
+                    priority="0">
+                    <range
+                        file="${:app*projectDir}/build.gradle.kts"
+                        startOffset="1804"
+                        endOffset="1835"/>
+                </fix-replace>
+            </fix-composite>
+            <fix-replace
+                description="Replace with existing version catalog reference `androidx-core-ktx` (version 1.15.0)"
+                replacement="libs.androidx.core.ktx"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="1804"
+                    endOffset="1835"/>
+            </fix-replace>
+        </fix-alternatives>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="61"
+            column="20"
+            startOffset="1804"
+            endLine="61"
+            endColumn="51"
+            endOffset="1835"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead (androidx.lifecycle:lifecycle-runtime-ktx is already available as `androidx-lifecycle-runtime-ktx`, but using version 2.8.7 instead)">
+        <fix-alternatives>
+            <fix-composite
+                description="Replace with new library catalog declaration for lifecycle-runtime-ktx-v270"
+                robot="true"
+                independent="true">
+                <fix-replace
+                    description="Replace with lifecycle-runtime-ktx-version = &quot;2.7.0&quot;..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="lifecycle-runtime-ktx-version = &quot;2.7.0&quot;&#xA;"
+                    priority="0">
+                    <range
+                        file="../gradle/libs.versions.toml"
+                        startOffset="313"
+                        endOffset="313"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with lifecycle-runtime-ktx-v270 = { module = &quot;androidx.lifecycle:lifecycle-runtime-ktx&quot;, version.ref = &quot;lifecycle-runtime-ktx-version&quot; }..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="lifecycle-runtime-ktx-v270 = { module = &quot;androidx.lifecycle:lifecycle-runtime-ktx&quot;, version.ref = &quot;lifecycle-runtime-ktx-version&quot; }&#xA;"
+                    priority="0">
+                    <range
+                        file="../gradle/libs.versions.toml"
+                        startOffset="3157"
+                        endOffset="3157"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with libs.lifecycle.runtime.ktx.v270"
+                    robot="true"
+                    independent="true"
+                    replacement="libs.lifecycle.runtime.ktx.v270"
+                    priority="0">
+                    <range
+                        file="${:app*projectDir}/build.gradle.kts"
+                        startOffset="1856"
+                        endOffset="1904"/>
+                </fix-replace>
+            </fix-composite>
+            <fix-replace
+                description="Replace with existing version catalog reference `androidx-lifecycle-runtime-ktx` (version 2.8.7)"
+                replacement="libs.androidx.lifecycle.runtime.ktx"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="1856"
+                    endOffset="1904"/>
+            </fix-replace>
+        </fix-alternatives>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="62"
+            column="20"
+            startOffset="1856"
+            endLine="62"
+            endColumn="68"
+            endOffset="1904"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead (androidx.activity:activity-compose is already available as `androidx-activity-compose`, but using version 1.10.1 instead)">
+        <fix-alternatives>
+            <fix-composite
+                description="Replace with new library catalog declaration for activity-compose-v182"
+                robot="true"
+                independent="true">
+                <fix-replace
+                    description="Replace with activity-compose-version = &quot;1.8.2&quot;..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="activity-compose-version = &quot;1.8.2&quot;&#xA;"
+                    priority="0">
+                    <range
+                        file="../gradle/libs.versions.toml"
+                        startOffset="12"
+                        endOffset="12"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with activity-compose-v182 = { module = &quot;androidx.activity:activity-compose&quot;, version.ref = &quot;activity-compose-version&quot; }..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="activity-compose-v182 = { module = &quot;androidx.activity:activity-compose&quot;, version.ref = &quot;activity-compose-version&quot; }&#xA;"
+                    priority="0">
+                    <range
+                        file="../gradle/libs.versions.toml"
+                        startOffset="550"
+                        endOffset="550"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with libs.activity.compose.v182"
+                    robot="true"
+                    independent="true"
+                    replacement="libs.activity.compose.v182"
+                    priority="0">
+                    <range
+                        file="${:app*projectDir}/build.gradle.kts"
+                        startOffset="1925"
+                        endOffset="1967"/>
+                </fix-replace>
+            </fix-composite>
+            <fix-replace
+                description="Replace with existing version catalog reference `androidx-activity-compose` (version 1.10.1)"
+                replacement="libs.androidx.activity.compose"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="1925"
+                    endOffset="1967"/>
+            </fix-replace>
+        </fix-alternatives>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="63"
+            column="20"
+            startOffset="1925"
+            endLine="63"
+            endColumn="62"
+            endOffset="1967"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead (androidx.compose.ui:ui is already available as `androidx-compose-ui`, but using version 1.7.8 instead)">
+        <fix-alternatives>
+            <fix-composite
+                description="Replace with new library catalog declaration for ui-v164"
+                robot="true"
+                independent="true">
+                <fix-replace
+                    description="Replace with ui-version = &quot;1.6.4&quot;..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="ui-version = &quot;1.6.4&quot;&#xA;"
+                    priority="0">
+                    <range
+                        file="../gradle/libs.versions.toml"
+                        startOffset="535"
+                        endOffset="535"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with ui-v164 = { module = &quot;androidx.compose.ui:ui&quot;, version.ref = &quot;ui-version&quot; }..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="ui-v164 = { module = &quot;androidx.compose.ui:ui&quot;, version.ref = &quot;ui-version&quot; }&#xA;"
+                    priority="0">
+                    <range
+                        file="../gradle/libs.versions.toml"
+                        startOffset="3951"
+                        endOffset="3951"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with libs.ui.v164"
+                    robot="true"
+                    independent="true"
+                    replacement="libs.ui.v164"
+                    priority="0">
+                    <range
+                        file="${:app*projectDir}/build.gradle.kts"
+                        startOffset="1988"
+                        endOffset="2018"/>
+                </fix-replace>
+            </fix-composite>
+            <fix-replace
+                description="Replace with existing version catalog reference `androidx-compose-ui` (version 1.7.8)"
+                replacement="libs.androidx.compose.ui"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="1988"
+                    endOffset="2018"/>
+            </fix-replace>
+        </fix-alternatives>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="64"
+            column="20"
+            startOffset="1988"
+            endLine="64"
+            endColumn="50"
+            endOffset="2018"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead">
+        <fix-composite
+            description="Replace with new library catalog declaration for ui-tooling-preview"
+            robot="true">
+            <fix-replace
+                description="Replace with ui-tooling-preview-version = &quot;1.6.4&quot;..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="ui-tooling-preview-version = &quot;1.6.4&quot;&#xA;"
+                priority="0">
+                <range
+                    file="../gradle/libs.versions.toml"
+                    startOffset="535"
+                    endOffset="535"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with ui-tooling-preview = { module = &quot;androidx.compose.ui:ui-tooling-preview&quot;, version.ref = &quot;ui-tooling-preview-version&quot; }..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="ui-tooling-preview = { module = &quot;androidx.compose.ui:ui-tooling-preview&quot;, version.ref = &quot;ui-tooling-preview-version&quot; }&#xA;"
+                priority="0">
+                <range
+                    file="../gradle/libs.versions.toml"
+                    startOffset="3951"
+                    endOffset="3951"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with libs.ui.tooling.preview"
+                robot="true"
+                replacement="libs.ui.tooling.preview"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="2088"
+                    endOffset="2134"/>
+            </fix-replace>
+        </fix-composite>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="66"
+            column="20"
+            startOffset="2088"
+            endLine="66"
+            endColumn="66"
+            endOffset="2134"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead (androidx.appcompat:appcompat is already available as `androidx-appcompat`, but using version 1.7.0 instead)">
+        <fix-alternatives>
+            <fix-composite
+                description="Replace with new library catalog declaration for appcompat-v161"
+                robot="true"
+                independent="true">
+                <fix-replace
+                    description="Replace with androidx-appcompat = &quot;1.6.1&quot;..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="androidx-appcompat = &quot;1.6.1&quot;&#xA;"
+                    priority="0">
+                    <range
+                        file="../gradle/libs.versions.toml"
+                        startOffset="38"
+                        endOffset="38"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with appcompat-v161 = { module = &quot;androidx.appcompat:appcompat&quot;, version.ref = &quot;androidx-appcompat&quot; }..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="appcompat-v161 = { module = &quot;androidx.appcompat:appcompat&quot;, version.ref = &quot;androidx-appcompat&quot; }&#xA;"
+                    priority="0">
+                    <range
+                        file="../gradle/libs.versions.toml"
+                        startOffset="760"
+                        endOffset="760"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with libs.appcompat.v161"
+                    robot="true"
+                    independent="true"
+                    replacement="libs.appcompat.v161"
+                    priority="0">
+                    <range
+                        file="${:app*projectDir}/build.gradle.kts"
+                        startOffset="2155"
+                        endOffset="2191"/>
+                </fix-replace>
+            </fix-composite>
+            <fix-replace
+                description="Replace with existing version catalog reference `androidx-appcompat` (version 1.7.0)"
+                replacement="libs.androidx.appcompat"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="2155"
+                    endOffset="2191"/>
+            </fix-replace>
+        </fix-alternatives>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="67"
+            column="20"
+            startOffset="2155"
+            endLine="67"
+            endColumn="56"
+            endOffset="2191"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use the existing version catalog reference (`libs.junit`) instead">
+        <fix-replace
+            description="Replace with existing version catalog reference `junit`"
+            robot="true"
+            independent="true"
+            replacement="libs.junit"
+            priority="0">
+            <range
+                file="${:app*projectDir}/build.gradle.kts"
+                startOffset="2394"
+                endOffset="2414"/>
+        </fix-replace>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="73"
+            column="24"
+            startOffset="2394"
+            endLine="73"
+            endColumn="44"
+            endOffset="2414"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead (androidx.test.ext:junit is already available as `androidx-junit`, but using version 1.2.1 instead)">
+        <fix-alternatives>
+            <fix-composite
+                description="Replace with new library catalog declaration for junit-v115"
+                robot="true"
+                independent="true">
+                <fix-replace
+                    description="Replace with junit-version = &quot;1.1.5&quot;..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="junit-version = &quot;1.1.5&quot;&#xA;"
+                    priority="0">
+                    <range
+                        file="../gradle/libs.versions.toml"
+                        startOffset="160"
+                        endOffset="160"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with junit-v115 = { module = &quot;androidx.test.ext:junit&quot;, version.ref = &quot;junit-version&quot; }..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="junit-v115 = { module = &quot;androidx.test.ext:junit&quot;, version.ref = &quot;junit-version&quot; }&#xA;"
+                    priority="0">
+                    <range
+                        file="../gradle/libs.versions.toml"
+                        startOffset="1428"
+                        endOffset="1428"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with libs.junit.v115"
+                    robot="true"
+                    independent="true"
+                    replacement="libs.junit.v115"
+                    priority="0">
+                    <range
+                        file="${:app*projectDir}/build.gradle.kts"
+                        startOffset="2446"
+                        endOffset="2477"/>
+                </fix-replace>
+            </fix-composite>
+            <fix-replace
+                description="Replace with existing version catalog reference `androidx-junit` (version 1.2.1)"
+                replacement="libs.androidx.junit"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="2446"
+                    endOffset="2477"/>
+            </fix-replace>
+        </fix-alternatives>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="74"
+            column="31"
+            startOffset="2446"
+            endLine="74"
+            endColumn="62"
+            endOffset="2477"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead (androidx.test.espresso:espresso-core is already available as `androidx-espresso-core`, but using version 3.6.1 instead)">
+        <fix-alternatives>
+            <fix-composite
+                description="Replace with new library catalog declaration for espresso-core-v351"
+                robot="true"
+                independent="true">
+                <fix-replace
+                    description="Replace with espresso-core-version = &quot;3.5.1&quot;..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="espresso-core-version = &quot;3.5.1&quot;&#xA;"
+                    priority="0">
+                    <range
+                        file="../gradle/libs.versions.toml"
+                        startOffset="38"
+                        endOffset="38"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with espresso-core-v351 = { module = &quot;androidx.test.espresso:espresso-core&quot;, version.ref = &quot;espresso-core-version&quot; }..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="espresso-core-v351 = { module = &quot;androidx.test.espresso:espresso-core&quot;, version.ref = &quot;espresso-core-version&quot; }&#xA;"
+                    priority="0">
+                    <range
+                        file="../gradle/libs.versions.toml"
+                        startOffset="760"
+                        endOffset="760"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with libs.espresso.core.v351"
+                    robot="true"
+                    independent="true"
+                    replacement="libs.espresso.core.v351"
+                    priority="0">
+                    <range
+                        file="${:app*projectDir}/build.gradle.kts"
+                        startOffset="2509"
+                        endOffset="2553"/>
+                </fix-replace>
+            </fix-composite>
+            <fix-replace
+                description="Replace with existing version catalog reference `androidx-espresso-core` (version 3.6.1)"
+                replacement="libs.androidx.espresso.core"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="2509"
+                    endOffset="2553"/>
+            </fix-replace>
+        </fix-alternatives>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="75"
+            column="31"
+            startOffset="2509"
+            endLine="75"
+            endColumn="75"
+            endOffset="2553"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Sign in with Google&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+            line="10"
+            column="9"
+            startOffset="357"
+            endLine="10"
+            endColumn="43"
+            endOffset="391"/>
+    </incident>
+
+</incidents>
