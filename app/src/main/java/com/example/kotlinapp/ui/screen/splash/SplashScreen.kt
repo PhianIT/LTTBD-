@@ -51,7 +51,7 @@ fun SplashScreen(navController: NavController) {
             val encodedEmail = URLEncoder.encode(email, StandardCharsets.UTF_8.toString())
             val encodedName = URLEncoder.encode(name, StandardCharsets.UTF_8.toString())
 
-            navController.navigate("profile/$encodedEmail/$encodedName") {
+            navController.navigate("main/$encodedEmail") {
                 popUpTo("splash") { inclusive = true }
             }
         } else {
