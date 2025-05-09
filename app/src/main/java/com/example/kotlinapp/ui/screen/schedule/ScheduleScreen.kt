@@ -1,4 +1,4 @@
-package com.example.kotlinapp.schedule
+package com.example.kotlinapp.ui.screen.schedule
 
 import android.os.Build
 import androidx.annotation.RequiresApi

@@ -11,9 +11,10 @@ import androidx.navigation.NavType
 import androidx.navigation.navArgument
 
 import com.example.kotlinapp.ui.screen.login.LoginScreen
-import com.example.kotlinapp.ui.screen.signup.SignUpScreen
-import com.example.kotlinapp.ui.screen.splash.SplashScreen
-import com.example.kotlinapp.screens.MainScreen
+import com.example.kotlinapp.ui.screen.SignUpScreen
+import com.example.kotlinapp.ui.screen.SplashScreen
+import com.example.kotlinapp.ui.screen.MainScreen
+import com.example.kotlinapp.ui.screen.ProfileScreen
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.google.firebase.auth.FirebaseAuth
@@ -92,7 +93,7 @@ fun NavGraph(
         ) { backStackEntry ->
             val email = backStackEntry.arguments?.getString("email") ?: ""
             val name = backStackEntry.arguments?.getString("name") ?: ""
-            com.example.kotlinapp.ui.screen.profile.ProfileScreen(
+            ProfileScreen(
                 email = email,
                 name = name,
                 onLogout = {

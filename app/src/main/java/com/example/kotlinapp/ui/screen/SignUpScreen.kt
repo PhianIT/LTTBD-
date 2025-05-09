@@ -1,4 +1,4 @@
-package com.example.kotlinapp.ui.screen.signup
+package com.example.kotlinapp.ui.screen
 
 import android.app.Activity
 import android.util.Patterns

@@ -1,4 +1,4 @@
-package com.example.kotlinapp.ui.screen.splash
+package com.example.kotlinapp.ui.screen
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn

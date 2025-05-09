@@ -1,5 +1,5 @@
 // MainScreen.kt
-package com.example.kotlinapp.screens
+package com.example.kotlinapp.ui.screen
 
 import WorkOrderDetailScreen
 import android.os.Build
@@ -14,7 +14,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -22,11 +21,10 @@ import androidx.navigation.compose.rememberNavController
 import com.example.kotlinapp.layout.AppBottomNavigation
 import com.example.kotlinapp.layout.AppTopBar
 import com.example.kotlinapp.layout.BottomNavItem
-import com.example.kotlinapp.schedule.ScheduleScreen
-import com.example.kotlinapp.ui.ThemeScreen
-import com.example.kotlinapp.ui.screen.profile.ProfileScreen
-import com.example.kotlinapp.user.ProfileScreen
-import com.example.kotlinapp.viewmodel.ThemeViewModel
+import com.example.kotlinapp.ui.screen.schedule.ScheduleScreen
+import com.example.kotlinapp.screens.WorkOrderScreen
+import com.example.kotlinapp.ui.screen.assets.AssetScreen
+import com.example.kotlinapp.ui.screen.inventory.InventoryScreen
 import com.google.firebase.auth.FirebaseAuth
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -69,14 +67,13 @@ fun MainScreen(userId: String = "user_001") {
             }
 
             composable("assets") {
-                val themeViewModel: ThemeViewModel = viewModel()
-                ThemeScreen()
+                AssetScreen()
             }
             composable("schedule") {
                 ScheduleScreen()
             }
             composable("inventory") {
-                // InventoryScreen()
+                InventoryScreen()
             }
             composable("work_order_detail/{orderId}") { backStackEntry ->
                 val orderId = backStackEntry.arguments?.getString("orderId")

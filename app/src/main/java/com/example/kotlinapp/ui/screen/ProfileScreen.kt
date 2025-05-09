@@ -1,6 +1,5 @@
-package com.example.kotlinapp.ui.screen.profile
+package com.example.kotlinapp.ui.screen
 
-import android.app.Activity
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
