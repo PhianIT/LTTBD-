@@ -104,12 +104,9 @@ fun NavGraph(
             )
         }
 
-        composable(
-            "main/{userId}",
-            arguments = listOf(navArgument("userId") { type = NavType.StringType })
-        ) { backStackEntry ->
+        composable("main/{userId}") { backStackEntry ->
             val userId = backStackEntry.arguments?.getString("userId") ?: "user_001"
-            MainScreen(userId = userId)
+            MainScreen(userId = userId, parentNavController = navController) // truyền navController
         }
     }
 }
