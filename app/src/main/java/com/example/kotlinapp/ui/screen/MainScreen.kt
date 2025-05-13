@@ -3,6 +3,7 @@ package com.example.kotlinapp.ui.screen
 
 import WorkOrderDetailScreen
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -52,6 +53,10 @@ fun MainScreen(userId: String = "user_001") {
                 },
                 onNotificationClick = {
                     navController.navigate("notifications")
+                },
+                onSearch = { query ->
+                    // Gọi API hoặc lọc dữ liệu dựa trên `query`
+                    Log.d("SEARCH", "Từ khóa: $query")
                 }
             )
         },
