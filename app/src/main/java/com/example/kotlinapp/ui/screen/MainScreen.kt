@@ -13,8 +13,10 @@ import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -26,6 +28,7 @@ import com.example.kotlinapp.ui.screen.schedule.ScheduleScreen
 import com.example.kotlinapp.screens.WorkOrderScreen
 import com.example.kotlinapp.ui.screen.assets.AssetScreen
 import com.example.kotlinapp.ui.screen.inventory.InventoryScreen
+import com.example.kotlinapp.workorder.WorkOrdersViewModel
 import com.google.firebase.auth.FirebaseAuth
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -34,6 +37,7 @@ fun MainScreen(userId: String = "user_001") {
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
+
 
     val items = listOf(
         BottomNavItem("Lệnh làm việc", Icons.Default.List, "work_orders"),
@@ -56,8 +60,10 @@ fun MainScreen(userId: String = "user_001") {
                 },
                 onSearch = { query ->
                     // Gọi API hoặc lọc dữ liệu dựa trên `query`
-                    Log.d("SEARCH", "Từ khóa: $query")
-                }
+//                    Log.d("SEARCH", "Từ khóa: $query")
+
+                },
+                navController,
             )
         },
         bottomBar = { AppBottomNavigation(navController) }
