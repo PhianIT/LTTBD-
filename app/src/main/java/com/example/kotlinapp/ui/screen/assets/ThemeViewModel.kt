@@ -10,9 +10,25 @@ import kotlinx.coroutines.flow.StateFlow
 class ThemeViewModel : ViewModel() {
 
     private val db = FirebaseFirestore.getInstance()
-
     private val _assetList = MutableStateFlow<List<Asset>>(emptyList())
+    private val _searchQuery = MutableStateFlow("")
     val assetList: StateFlow<List<Asset>> = _assetList
+    val searchQuery: StateFlow<String> = _searchQuery
+    val filteredAssetList = kotlinx.coroutines.flow.combine(_assetList, _searchQuery) { assets, query ->
+        if (query.isBlank()) assets
+        else assets.filter {
+            it.name.contains(query, ignoreCase = true) ||
+                    it.code.contains(query, ignoreCase = true)
+        }
+    }
+
+    init {
+        fetchAssets()
+    }
+
+    fun onSearchQueryChanged(query: String) {
+        _searchQuery.value = query
+    }
 
     // Lấy danh sách tài sản từ Firestore
     fun fetchAssets() {
@@ -29,7 +45,7 @@ class ThemeViewModel : ViewModel() {
     }
 
     // Thêm tài sản mới vào Firestore
-    fun addAsset(asset: Inventory) {
+    fun addAsset(asset: Asset) {
         db.collection("assets")
             .add(asset)
             .addOnSuccessListener {

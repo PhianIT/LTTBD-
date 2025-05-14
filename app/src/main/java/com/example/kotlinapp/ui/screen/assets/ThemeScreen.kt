@@ -54,7 +54,7 @@ fun AssetScreen() {
 
         // ✅ Hiển thị Dialog khi showDialog = true
         if (showDialog) {
-            com.example.kotlinapp.ui.screen.inventory.AddAssetDialog(
+            AddAssetDialog(
                 onDismiss = { showDialog = false },
                 onSave = { newAsset ->
                     viewModel.addAsset(newAsset)
@@ -74,7 +74,7 @@ fun AddAssetDialog(
     var code by remember { mutableStateOf("") }
     var name by remember { mutableStateOf("") }
     var status by remember { mutableStateOf("Có sẵn") }
-
+    var searchQuery by remember { mutableStateOf("") }
     Dialog(onDismissRequest = { onDismiss() }) {
         Surface(
             shape = RoundedCornerShape(24.dp),

@@ -63,7 +63,13 @@ fun MainScreen(userId: String = "user_001") {
 //                    Log.d("SEARCH", "Từ khóa: $query")
 
                 },
-                navController,
+                navController = navController,
+                currentScreen = when (currentRoute) {
+                    "work_orders" -> "WorkOrder"
+                    "assets" -> "Asset"
+                    "inventory" -> "Inventory"
+                    else -> "Other"
+                }
             )
         },
         bottomBar = { AppBottomNavigation(navController) }

@@ -13,6 +13,11 @@ class InventoryViewModel : ViewModel() {
     private val _inventoryList = MutableStateFlow<List<Inventory>>(emptyList())
     val inventoryList: StateFlow<List<Inventory>> = _inventoryList
 
+
+    init {
+        fetchInventory()
+    }
+
     // Lấy danh sách tài sản từ Firestore
     fun fetchInventory() {
         db.collection("inventory")

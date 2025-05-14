@@ -31,6 +31,9 @@ import com.example.kotlinapp.workorder.WorkOrdersViewModel
 import com.google.firebase.components.Lazy
 import com.example.kotlinapp.ui.screen.assets.Asset
 import com.example.kotlinapp.ui.screen.assets.AssetCard
+import com.example.kotlinapp.ui.screen.inventory.Inventory
+import com.example.kotlinapp.ui.screen.inventory.InventoryCard
+import com.example.kotlinapp.ui.screen.inventory.InventoryViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -39,13 +42,15 @@ fun AppTopBar(
     onProfileClick: () -> Unit,
     onNotificationClick: () -> Unit,
     onSearch: (String) -> Unit, // Callback khi tìm kiếm
-    navController: NavController
+    navController: NavController,
+    currentScreen: String
 ) {
-    Log.d("SEARCH",title);
-    var data by remember { mutableStateOf(emptyList<WorkOrder>()) }
-    var dataAsset by remember { mutableStateOf(emptyList<Asset>()) }
     var searchQuery by remember { mutableStateOf("") }
     var active by remember { mutableStateOf(false) }
+
+    var dataOrders by remember { mutableStateOf(emptyList<WorkOrder>()) }
+    var dataAsset by remember { mutableStateOf(emptyList<Asset>()) }
+    var dataInventory by remember { mutableStateOf(emptyList<Inventory>()) }
 
     val ordersViewModel: WorkOrdersViewModel = viewModel()
     val workOrders by ordersViewModel.workOrders.collectAsState()
@@ -53,19 +58,32 @@ fun AppTopBar(
     val themeViewModel: ThemeViewModel = viewModel()
     val assetList by themeViewModel.assetList.collectAsState()
 
+    val viewModel: InventoryViewModel = viewModel()
+    val inventoryList by viewModel.inventoryList.collectAsState()
 
     if (active) {
         // Khi SearchBar được kích hoạt
         SearchBar(
             query = searchQuery,
-            onQueryChange = { searchQuery = it;
-            // tìm với lệnh làm việc
-                data = workOrders.filter { it.title.contains(searchQuery, ignoreCase = true);}
-                    // tìm với tài sản
-                dataAsset = assetList.filter { it.name.contains(searchQuery, ignoreCase = true)            } },
+            onQueryChange = {
+                searchQuery = it
+
+                // Lọc dữ liệu dựa trên màn hình hiện tại
+                when (title) {
+                    "Lệnh làm việc" -> dataOrders = workOrders.filter { order ->
+                        order.title.contains(searchQuery, ignoreCase = true)
+                    }
+                    "Tài sản" -> dataAsset = assetList.filter { asset ->
+                        asset.name.contains(searchQuery, ignoreCase = true)
+                    }
+                    "Hạng mục kho" -> dataInventory = inventoryList.filter { inventory ->
+                        inventory.name.contains(searchQuery, ignoreCase = true)
+                    }
+                    else -> {} // Không làm gì cho các màn hình khác
+                }
+            },
             onSearch = {
                 onSearch(it)
-                data = workOrders.filter { it.title.contains(it.toString(), ignoreCase = true) }
                 active = false
             },
             active = active,
@@ -84,23 +102,27 @@ fun AppTopBar(
                 }
             }
         ) {
-            // Danh sách kết quả tìm kiếm nếu cần hiển thị
+            // Danh sách kết quả tìm kiếm
             Text("Kết quả cho: $searchQuery", modifier = Modifier.padding(16.dp))
-            Log.d("DATA",data.toString());
 
-            LazyColumn(modifier = Modifier.padding(8.dp)) {
-                items(data) { order ->
-                    // Truyền navController vào cho WorkOrderItem
-                    WorkOrderItem(order = order, navController)
+            when (title) {
+                "Lệnh làm việc" -> LazyColumn(modifier = Modifier.padding(8.dp)) {
+                    items(dataOrders) { order ->
+                        WorkOrderItem(order = order, navController)
+                    }
                 }
-            }
-
-            LazyColumn(modifier = Modifier.padding(8.dp)) {
-                items(dataAsset) { asset ->
-                    AssetCard(asset = asset)
+                "Tài sản" -> LazyColumn(modifier = Modifier.padding(8.dp)) {
+                    items(dataAsset) { asset ->
+                        AssetCard(asset = asset)
+                    }
                 }
+                "Hạng mục kho" -> LazyColumn(modifier = Modifier.padding(8.dp)) {
+                    items(dataInventory) { inventory ->
+                        InventoryCard(inventory = inventory)
+                    }
+                }
+                else -> Text("Không có kết quả tìm kiếm")
             }
-
         }
     } else {
         // TopAppBar mặc định
@@ -111,7 +133,7 @@ fun AppTopBar(
                     Icon(Icons.Default.Search, contentDescription = "Tìm kiếm")
                 }
                 IconButton(onClick = onNotificationClick) {
-                    NotificationMenu() // Hoặc Icon nếu bạn chưa định nghĩa NotificationMenu
+                    NotificationMenu()
                 }
                 IconButton(onClick = onProfileClick) {
                     Icon(Icons.Default.Face, contentDescription = "Hồ sơ cá nhân")
